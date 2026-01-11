@@ -6,6 +6,7 @@ import { FiMenu, FiShoppingBag, FiUser } from "react-icons/fi";
 import { GoSearch } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
+import Link from "next/link";
 
 const Navbar = () => {
 
@@ -26,6 +27,11 @@ const Navbar = () => {
         "Organic Zone",
         "Pickle",
       ];
+
+      const productHref = (category) => ({
+        pathname:"/products",
+        query: { category }
+      });
   return (
     <div>
       <header className="w-full border-b border-gray-200">
@@ -74,15 +80,15 @@ const Navbar = () => {
               <IoMdClose size={19} />
             </button>
 
-            <ul className="space-y-4 text-sm">
+            <ul className="space-y-4 space-x-0 text-sm">
               {categories.map((item, index) => (
-                <li
+                <ul
                   key={index}
                   className="cursor-pointer fren:hover"
                   onClick={() => setOpen(false)}
                 >
-                  {item}
-                </li>
+                  <Link href={productHref(item)} onClick={() => setOpen(false)} className="block no-underline text-black visited:text-fren hover:text-robinhood">{item}</Link>
+                </ul>
               ))}
             </ul>
           </div>
@@ -108,16 +114,12 @@ const Navbar = () => {
         <nav className="hidden md:block bg-gray-100">
           <ul className="flex flex-wrap justify-center gap-6 px-6 py-3 text-sm">
             {categories.map((item, index) => (
-              <li
+              <ul
                 key={index}
-                className={`cursor-pointer bg-robinhood:hover ${
-                  item === "খেজুর গুড়"
-                    ? "border-b-2 text-robinhood font-medium"
-                    : ""
-                }`}
+                className="cursor-pointer fren:hover"
               >
-                {item}
-              </li>
+                <Link href={productHref(item)} className="no-underline text-black visited:text-fren hover:text-robinhood">{item}</Link>
+              </ul>
             ))}
           </ul>
         </nav>

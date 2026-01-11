@@ -20,7 +20,9 @@ export default function LayoutWrapper({ children }) {
   return (
     <>
       {!hideNavbarFooter && <Navbar />}
-      {children}
+      <main className="flex-grow">
+        {children}
+      </main>
       {!hideNavbarFooter && <Footer />}
     </>
   );
