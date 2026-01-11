@@ -83,3 +83,38 @@
     color: #551A8B;
   }
 }
+
+
+.text-black-cus {
+  color: #222222dd;
+}
+
+
+.text-robinhood {
+  color: #4CAF50;
+}
+
+.bg-robinhood {
+  background-color: #4CAF50;
+}
+.bg-robinhood:hover {
+  background-color: #00C805;
+}
+
+.text-dark-robinhood {
+  color: #007B03;
+}
+
+.robinhood-border {
+    border-color: #4CAF50;
+}
+
+.text-fren {
+    color: #4ca626;
+}
+.bg-fren {
+    background-color: #4ca626;
+}
+.fren:hover {
+    background-color: #4ca626;
+}
