@@ -42,7 +42,9 @@ const Navbar = () => {
           />
 
           <div className="flex justify-center items-center gap-2">
+            <Link href="/" className="text-lg font-semibold text-fren">
             <img src={sellsfieLogo.src} alt="Logo" className="h-8" />
+            </Link>
           </div>
 
           <div className="flex items-center gap-4">

@@ -49,7 +49,7 @@ const page = () => {
                 </SheetContent>
               </Sheet>
             </div>
-            <div className="grid grid-cols-2  md:grid-cols-3 2xl:grid-cols-5 lg:ml-0.5 gap-5 items-stretch">
+            <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 lg:ml-0.5 gap-5 items-stretch py-4 sm:px-3 sm:py-8 px-3">
               <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
                 <Image
                   src={cosmeticsProduct}
