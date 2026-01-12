@@ -41,7 +41,7 @@ const Navbar = () => {
             onClick={() => setOpen(true)}
           />
 
-          <div className="flex justify-center items-center gap-2">
+          <div className="flex justify-center items-center gap-2 cursor-pointer">
             <Link href="/" className="text-lg font-semibold text-fren">
             <img src={sellsfieLogo.src} alt="Logo" className="h-8" />
             </Link>
@@ -99,7 +99,9 @@ const Navbar = () => {
         <div className="hidden md:flex items-center justify-between px-12 py-4">
           <GoSearch className="text-xl text-fren cursor-pointer" />
           <div className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2 cursor-pointer">
             <img src={sellsfieLogo.src} alt="Logo" className="h-10" />
+            </Link>
           </div>
 
           <div className="flex items-center gap-6">

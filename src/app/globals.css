@@ -82,7 +82,7 @@
 }
 
 .text-black-cus {
-  color: #222222dd;
+  color: #363535dd;
 }
 
 .text-robinhood {
@@ -91,9 +91,6 @@
 
 .bg-robinhood {
   background-color: #4CAF50;
-}
-.bg-robinhood:hover {
-  background-color: #00C805;
 }
 
 .text-dark-robinhood {

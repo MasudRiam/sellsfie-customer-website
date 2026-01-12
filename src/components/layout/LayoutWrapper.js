@@ -7,7 +7,7 @@ import Footer from "@/HomePage/Footer";
 export default function LayoutWrapper({ children }) {
   const pathname = usePathname();
 
-  const validRoutes = ["/", "/about", "/products", "/contact"];
+  const validRoutes = ["/", "/about", "/products", "/product", "/contact"];
 
   const authRoutes = ["/login", "/register", "/signup"];
 
