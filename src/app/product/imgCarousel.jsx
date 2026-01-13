@@ -6,6 +6,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselPrevious,
+  CarouselNext
 } from "@/components/ui/carousel";
 
 const ImgCarousel = ({ images }) => {
@@ -40,6 +42,8 @@ const ImgCarousel = ({ images }) => {
             </CarouselItem>
           ))}
         </CarouselContent>
+        <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-green-500 rounded-full shadow"/>
+        <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-green-500 rounded-full shadow"/>
       </Carousel>
 
       <div className="mt-4 flex gap-3 justify-center">

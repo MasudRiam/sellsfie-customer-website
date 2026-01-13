@@ -82,12 +82,12 @@ const Footer = () => {
         <div className="lg:align-middle">
           <div className="mx-auto px-4 py-4 text-left text-sm text-gray-500">
             COPYRIGHT &copy; 2026{" "}
-            <a
+            <Link
               href="/"
-              className="text-robinhood hover:underline font-semibold"
+              className="text-robinhood hover:underline no-underline font-semibold"
             >
               Sellsfie
-            </a>
+            </Link>
             , All rights reserved
           </div>
         </div>
