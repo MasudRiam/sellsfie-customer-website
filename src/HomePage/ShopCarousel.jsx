@@ -46,14 +46,14 @@ export function ShopCarousel() {
     >
     <CarouselContent>
     {shops.map((shop, index) => (
-        <CarouselItem key={index} className="md:basis-1/4 lg:basis-1/6 sm:basis-1/3 basis-1/2 p-2">
+        <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/5 sm:basis-1/3 basis-1/2 p-2">
         <div className="p-2">
             <div className="relative aspect-square rounded-full overflow-hidden group">
             <Image
                 src={shop.image}
                 alt={`shop-${index}`}
                 fill
-                className="object-cover transition-transform duration-300 bg-white group-hover:scale-105"
+                className="object-cover mx-auto h-37 sm:h-42 lg:h-55 transition-transform duration-300 bg-white group-hover:scale-105"
             />
             <div className="
             absolute inset-0 

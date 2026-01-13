@@ -188,18 +188,17 @@ const BodyHomePage = () => {
           </div>
         </section>
 
-      {/* carousel Section */}
-      <section className="bg-[#f7f7f7] p-14">
-        <div className="max-w-6xl mx-auto">
-        <div>
-          <h2 className="text-center text-3xl tracking-tight font-semibold mb-10 uppercase">
-            HOT PRODUCT
-          </h2>
-        </div>
-        <ShopCarousel />
-        </div>
-      </section>
-
+        {/* carousel Section */}
+        <section className="bg-[#f7f7f7] p-14">
+          <div className="max-w-6xl mx-auto">
+            <div>
+              <h2 className="text-center text-3xl tracking-tight font-semibold mb-10 uppercase">
+                HOT PRODUCT
+              </h2>
+            </div>
+            <ShopCarousel />
+          </div>
+        </section>
 
         {/* collection section  */}
         <section className="mx-auto max-w-[1280px]  pt-6 pb-16">
@@ -210,23 +209,25 @@ const BodyHomePage = () => {
           <div className="mx-auto max-w-[900px] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-7 gap-x-2 justify-items-center">
             {collections.map((item, idx) => (
               <div key={idx} className="text-center">
-                <div className="relative w-40 h-40 sm:w-36 sm:h-36 bg-white border border-green-200 flex items-center justify-center">
-                  <Image
-                    src={sllsfieShortLogo}
-                    alt="Sellfie Logo"
-                    className="absolute top-2 left-2 w-3 h-3"
-                  />
+                <Link href="/product" className="no-underline">
+                  <div className="relative w-40 h-40 sm:w-36 sm:h-36 bg-white border border-green-200 flex items-center justify-center">
+                    <Image
+                      src={sllsfieShortLogo}
+                      alt="Sellfie Logo"
+                      className="absolute top-2 left-2 w-3 h-3"
+                    />
 
-                  <Image
-                    src={item.img}
-                    alt={item.title}
-                    className="max-h-[70%] max-w-[70%] object-contain"
-                  />
-                </div>
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      className="max-h-[70%] max-w-[70%] object-contain"
+                    />
+                  </div>
 
-                <p className="mt-4 text-base text-gray-700 whitespace-normal break-words">
-                  {item.title}
-                </p>
+                  <p className="mt-4 text-base text-gray-700 whitespace-normal break-words">
+                    {item.title}
+                  </p>
+                </Link>
               </div>
             ))}
           </div>

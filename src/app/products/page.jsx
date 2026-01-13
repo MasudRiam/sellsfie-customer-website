@@ -6,6 +6,7 @@ import pizzaproduct from "@/assets/img/product/pizza.png";
 import plasticbottol from "@/assets/img/product/plastic-bottol.jpg";
 import flowerpot from "@/assets/img/product/flower-pot.jpg";
 import { IoIosArrowDown } from "react-icons/io";
+import Link from "next/link";
 
 import {
   Sheet,
@@ -50,38 +51,42 @@ const page = () => {
               </Sheet>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 lg:ml-0.5 gap-5 items-stretch py-4 sm:px-3 sm:py-8 px-3">
-              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
+              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md h-[min-content] transition flex flex-col">
+                <Link href="/product" className="no-underline">
                 <Image
                   src={cosmeticsProduct}
                   alt="Product"
                   className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
                 />
-                <div className="mt-auto">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10">
-                    দেশি সরিষার তেল cdfvgbhnjcfvgbhnmk,cdfvgbhnmk
+                <div className="mt-auto pt-4">
+                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
+                    দেশি সরিষার তেল
                   </p>
-                  <p className="mt-4 font-semibold">Tk 1,550.00</p>
+                  <p className="mt-4 font-semibold text-black hover:text-green-700">Tk 1,550.00</p>
+                </div>
+                  </Link>
                   <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
                     Quick Add
                   </button>
-                </div>
               </div>
 
               <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
+                <Link href="/product" className="no-underline">
                 <Image
                   src={pizzaproduct}
                   alt="Product"
                   className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
                 />
-                <div className="mt-auto">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10">
+                <div className="mt-auto pt-4">
+                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
                     Gawa Ghee / ঘি
                   </p>
-                  <p className="mt-4 font-semibold">Tk 1,800.00</p>
+                  <p className="mt-4 font-semibold text-black hover:text-green-700">Tk 1,800.00</p>
+                </div>
+                  </Link>
                   <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
                     Quick Add
                   </button>
-                </div>
               </div>
 
               <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col relative">
