@@ -1,5 +1,6 @@
 import React from "react";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -37,9 +38,9 @@ const Footer = () => {
               </h4>
               <ul className="mt-4 space-y-3 text-sm text-gray-700">
                 <ul>
-                  <a href="/" className="text-black-cus no-underline hover:underline">
+                  <Link href="/about" className="text-black-cus no-underline hover:underline">
                     About Us
-                  </a>
+                  </Link>
                 </ul>
                 <ul>
                   <a href="/" className="text-black-cus no-underline hover:underline">
