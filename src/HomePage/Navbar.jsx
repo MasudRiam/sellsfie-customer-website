@@ -88,7 +88,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center justify-between px-12 py-4">
+        <div className="hidden md:flex items-center justify-between px-12 py-2">
           <GoSearch className="text-xl text-fren cursor-pointer" />
           <div className="flex items-center gap-2">
             <img src={sellsfieLogo.src} alt="Logo" className="h-10" />
@@ -106,7 +106,7 @@ const Navbar = () => {
         </div>
 
         <nav className="hidden md:block bg-gray-100">
-          <ul className="flex flex-wrap justify-center gap-6 px-6 py-3 text-sm">
+          <ul className="flex flex-wrap justify-center gap-6 px-6 py-3 text-sm mt-0">
             {categories.map((item, index) => (
               <li
                 key={index}

@@ -6,6 +6,7 @@ import pizzaproduct from "@/assets/img/product/pizza.png";
 import plasticbottol from "@/assets/img/product/plastic-bottol.jpg";
 import flowerpot from "@/assets/img/product/flower-pot.jpg";
 import sllsfieShortLogo from "@/assets/logo/sellsfiemini.png";
+import { ShopCarousel } from "./ShopCarousel";
 
 const BodyHomePage = () => {
 
@@ -25,7 +26,7 @@ const BodyHomePage = () => {
       </div>
 
       {/* body section  */}
-      <div className="mx-auto max-w-[1280px] px-4 py-10">
+      <div className="mx-auto py-10">
         <h1 className="text-center text-3xl tracking-wide font-normal mb-7 uppercase">
           All Product
         </h1>
@@ -160,6 +161,19 @@ const BodyHomePage = () => {
             </div>
           </div>
         </section>
+
+      {/* carousel Section */}
+      <section className="bg-[#f7f7f7] p-14">
+        <div className="max-w-6xl mx-auto">
+        <div>
+          <h2 className="text-center text-3xl tracking-tight font-semibold mb-10 uppercase">
+            HOT PRODUCT
+          </h2>
+        </div>
+        <ShopCarousel />
+        </div>
+      </section>
+
 
         {/* collection section  */}
         <section className="mx-auto max-w-[1280px]  pt-6 pb-16">
