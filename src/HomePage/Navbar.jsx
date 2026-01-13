@@ -86,7 +86,7 @@ const Navbar = () => {
               {categories.map((item, index) => (
                 <ul
                   key={index}
-                  className="cursor-pointer fren:hover"
+                  className="cursor-pointer hover:underline"
                   onClick={() => setOpen(false)}
                 >
                   <Link href={productHref(item)} onClick={() => setOpen(false)} className="block no-underline text-black visited:text-fren hover:text-robinhood">{item}</Link>
@@ -120,7 +120,7 @@ const Navbar = () => {
             {categories.map((item, index) => (
               <ul
                 key={index}
-                className="cursor-pointer fren:hover"
+                className="cursor-pointer hover:underline"
               >
                 <Link href={productHref(item)} className="no-underline text-black visited:text-fren hover:text-robinhood">{item}</Link>
               </ul>
