@@ -36,21 +36,21 @@ const Footer = () => {
                 Company
               </h4>
               <ul className="mt-4 space-y-3 text-sm text-gray-700">
-                <li>
-                  <a href="/" className="text-black-cus hover:underline">
+                <ul>
+                  <a href="/" className="text-black-cus no-underline hover:underline">
                     About Us
                   </a>
-                </li>
-                <li>
-                  <a href="/" className="text-black-cus hover:underline">
+                </ul>
+                <ul>
+                  <a href="/" className="text-black-cus no-underline hover:underline">
                     Return Policy
                   </a>
-                </li>
-                <li>
-                  <a href="/" className="text-black-cus hover:underline">
+                </ul>
+                <ul>
+                  <a href="/" className="text-black-cus no-underline hover:underline">
                     Refund Policy
                   </a>
-                </li>
+                </ul>
               </ul>
             </div>
 
@@ -59,16 +59,16 @@ const Footer = () => {
                 Quick Help
               </h4>
               <ul className="mt-4 space-y-3 text-sm text-gray-700">
-                <li>
-                  <a href="/" className="text-black-cus hover:underline">
+                <ul>
+                  <a href="/" className="text-black-cus no-underline hover:underline">
                     গ্রাহক সেবা
                   </a>
-                </li>
-                <li>
-                  <a href="/" className="text-black-cus hover:underline">
+                </ul>
+                <ul>
+                  <a href="/" className="text-black-cus no-underline hover:underline">
                     Contact
                   </a>
-                </li>
+                </ul>
               </ul>
 
               <p className="mt-6 text-sm font-semibold text-gray-900">

@@ -6,6 +6,7 @@ import { FiMenu, FiShoppingBag, FiUser } from "react-icons/fi";
 import { GoSearch } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
+import Link from "next/link";
 
 const Navbar = () => {
 
@@ -26,6 +27,11 @@ const Navbar = () => {
         "Organic Zone",
         "Pickle",
       ];
+
+      const productHref = (category) => ({
+        pathname:"/products",
+        query: { category }
+      });
   return (
     <div>
       <header className="w-full border-b border-gray-200">
@@ -35,8 +41,10 @@ const Navbar = () => {
             onClick={() => setOpen(true)}
           />
 
-          <div className="flex justify-center items-center gap-2">
+          <div className="flex justify-center items-center gap-2 cursor-pointer">
+            <Link href="/" className="text-lg font-semibold text-fren">
             <img src={sellsfieLogo.src} alt="Logo" className="h-8" />
+            </Link>
           </div>
 
           <div className="flex items-center gap-4">
@@ -74,15 +82,15 @@ const Navbar = () => {
               <IoMdClose size={19} />
             </button>
 
-            <ul className="space-y-4 text-sm">
+            <ul className="space-y-4 space-x-0 text-sm">
               {categories.map((item, index) => (
-                <li
+                <ul
                   key={index}
-                  className="cursor-pointer fren:hover"
+                  className="cursor-pointer hover:underline"
                   onClick={() => setOpen(false)}
                 >
-                  {item}
-                </li>
+                  <Link href={productHref(item)} onClick={() => setOpen(false)} className="block no-underline text-black visited:text-fren hover:text-robinhood">{item}</Link>
+                </ul>
               ))}
             </ul>
           </div>
@@ -91,7 +99,9 @@ const Navbar = () => {
         <div className="hidden md:flex items-center justify-between px-12 py-4">
           <GoSearch className="text-xl text-fren cursor-pointer" />
           <div className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2 cursor-pointer">
             <img src={sellsfieLogo.src} alt="Logo" className="h-10" />
+            </Link>
           </div>
 
           <div className="flex items-center gap-6">
@@ -108,16 +118,12 @@ const Navbar = () => {
         <nav className="hidden md:block bg-gray-100">
           <ul className="flex flex-wrap justify-center gap-6 px-6 py-3 text-sm">
             {categories.map((item, index) => (
-              <li
+              <ul
                 key={index}
-                className={`cursor-pointer bg-robinhood:hover ${
-                  item === "খেজুর গুড়"
-                    ? "border-b-2 text-robinhood font-medium"
-                    : ""
-                }`}
+                className="cursor-pointer hover:underline"
               >
-                {item}
-              </li>
+                <Link href={productHref(item)} className="no-underline text-black visited:text-fren hover:text-robinhood">{item}</Link>
+              </ul>
             ))}
           </ul>
         </nav>
