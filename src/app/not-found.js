@@ -15,7 +15,7 @@ const Error404 = () => {
       <div className="relative mx-auto flex min-h-screen max-w-5xl items-center justify-center px-4 py-12">
         <section className="relative mx-auto my-12 flex w-full max-w-3xl flex-col items-center text-center">
           <img
-            src={errorImg}
+            src={errorImg.src}
             alt="404 illustration"
             className="mb-8 w-auto max-w-[520px] select-none"
             draggable={false}
