@@ -25,7 +25,7 @@ const page = () => {
           </aside>
 
           <main>
-            <div className="mb-4 lg:hidden">
+            <div className="mb-3 ml-3 lg:hidden">
               <Sheet>
                 <SheetTrigger asChild>
                   <button
@@ -43,13 +43,13 @@ const page = () => {
                     <SheetTitle>{""}</SheetTitle>
                   </SheetHeader>
 
-                  <div className="mt-4">
+                  <div className="md:mt-4 sm:mt-2 lg:mt-4">
                     <FilterProducts />
                   </div>
                 </SheetContent>
               </Sheet>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-5 lg:ml-0.5 gap-5 items-stretch py-4 sm:px-3 sm:py-8 px-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 lg:ml-0.5 gap-5 items-stretch py-4 sm:px-3 sm:py-8 px-3">
               <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
                 <Image
                   src={cosmeticsProduct}

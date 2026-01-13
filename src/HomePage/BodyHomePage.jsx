@@ -31,8 +31,8 @@ const BodyHomePage = () => {
           All Product
         </h1>
 
-        <section className="mx-auto w-full max-w-[1280px] px-1 py-4 sm:px-3 sm:py-8">
-          <div className="grid grid-cols-2  md:grid-cols-3 2xl:grid-cols-5 gap-5 items-stretch">
+        <section className="mx-auto w-full max-w-[1280px] px-4 py-4 sm:px-3 sm:py-8">
+          <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-5 gap-5 items-stretch">
             <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
               <Link href="/product" className="no-underline">
                 <Image

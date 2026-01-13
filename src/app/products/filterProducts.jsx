@@ -88,7 +88,7 @@ const FilterProducts = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <div className="py-2 mt-2 mb-4 text-base font-medium">Price</div>
+      <div className="py-1 mt-1 mb-4 text-base font-medium">Price</div>
       <Slider
         value={price}
         min={0}
