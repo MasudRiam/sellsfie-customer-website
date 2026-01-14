@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 import { useCart } from "@/context/cart-context";
 import Image from "next/image";
+import Link from "next/link";
 
 const CartSheet = () => {
   const { open, setOpen, items, updateQty, removeItem } = useCart();
@@ -91,7 +92,11 @@ const CartSheet = () => {
             🛒 ক্যাশ অন ডেলিভারিতে অর্ডার করুন
           </Button>
 
-          <p className="text-center text-sm underline cursor-pointer">View Cart</p>
+          <Link
+            href="/cart"
+            onClick={() => setOpen(false)}>
+          <p className="text-center text-sm cursor-pointer text-black hover:text-green-700">View Cart</p>
+          </Link>
         </div>
       </SheetContent>
     </Sheet>

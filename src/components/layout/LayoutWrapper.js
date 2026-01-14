@@ -8,7 +8,7 @@ import CartRootProvider from "@/components/providers/CartProvider";
 export default function LayoutWrapper({ children }) {
   const pathname = usePathname();
 
-  const validRoutes = ["/", "/about", "/products", "/product", "/contact"];
+  const validRoutes = ["/", "/about", "/products", "/product", "/contact", "/cart"];
 
   const authRoutes = ["/login", "/register", "/signup"];
 
