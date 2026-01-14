@@ -15,7 +15,7 @@
     font-size: 1.5em;
     font-weight: bold;
     /* margin-top: 0.83em; */
-    margin-bottom: 0.83em;
+    /* margin-bottom: 0.83em; */
   }
 
   h3 {
@@ -29,7 +29,7 @@
     font-size: 1em;
     font-weight: bold;
     /* margin-top: 1.33em; */
-    margin-bottom: 1.33em;
+    /* margin-bottom: 1.33em; */
   }
 
   h5 {
@@ -47,7 +47,7 @@
   }
 
   p {
-    margin-top: 1em;
+    /* margin-top: 1em; */
     margin-bottom: 1em;
   }
 
@@ -110,6 +110,11 @@
 .fren:hover {
     background-color: #4ca626;
 }
+
+.cadmium-orange {
+  background-color: #DE802B;
+}
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

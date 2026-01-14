@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "@/HomePage/Navbar";
 import Footer from "@/HomePage/Footer";
+import CartRootProvider from "@/components/providers/CartProvider";
 
 export default function LayoutWrapper({ children }) {
   const pathname = usePathname();
@@ -19,11 +20,11 @@ export default function LayoutWrapper({ children }) {
 
   return (
     <>
-      {!hideNavbarFooter && <Navbar />}
-      <main className="flex-grow">
-        {children}
-      </main>
-      {!hideNavbarFooter && <Footer />}
+      <CartRootProvider>
+        {!hideNavbarFooter && <Navbar />}
+        <main className="flex-grow">{children}</main>
+        {!hideNavbarFooter && <Footer />}
+      </CartRootProvider>
     </>
   );
 }

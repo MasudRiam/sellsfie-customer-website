@@ -65,12 +65,12 @@ const page = () => {
                   <p className="mt-4 font-semibold text-black hover:text-green-700">Tk 1,550.00</p>
                 </div>
                   </Link>
-                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
+                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white cursor-pointer">
                     Quick Add
                   </button>
               </div>
 
-              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
+              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-[min-content] flex flex-col">
                 <Link href="/product" className="no-underline">
                 <Image
                   src={pizzaproduct}
@@ -84,12 +84,13 @@ const page = () => {
                   <p className="mt-4 font-semibold text-black hover:text-green-700">Tk 1,800.00</p>
                 </div>
                   </Link>
-                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
+                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white cursor-pointer">
                     Quick Add
                   </button>
               </div>
 
-              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col relative">
+              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-[min-content] flex flex-col relative">
+                <Link href="/product" className="no-underline">
                 <span className="absolute top-3 left-3 rounded-full bg-green-100 px-3 py-1 text-xs text-green-700">
                   ON SALE
                 </span>
@@ -99,87 +100,93 @@ const page = () => {
                   className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
                 />
                 <div className="mt-auto">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10">
+                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
                     Natural Honeycomb 1kg
                   </p>
-                  <p className="mt-4 font-semibold">
+                  <p className="mt-4 font-semibold text-black hover:text-green-700">
                     Tk 2,250.00{" "}
-                    <span className="ml-2 text-sm text-gray-400 line-through">
-                      Tk 2,500.00
-                    </span>
                   </p>
-                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
+                </div>
+                  </Link>
+                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white cursor-pointer">
                     Quick Add
                   </button>
-                </div>
               </div>
 
-              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
+              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-[min-content] flex flex-col">
+                <Link href="/product" className="no-underline">
                 <Image
                   src={pizzaproduct}
                   alt="Product"
                   className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
                 />
-                <div className="mt-auto">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10">
+                <div className="mt-auto pt-4">
+                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
                     Honey Nuts
                   </p>
-                  <p className="mt-4 font-semibold">Tk 1,500.00</p>
-                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
+                  <p className="mt-4 font-semibold text-black hover:text-green-700">Tk 1,500.00</p>
+                </div>
+                </Link>
+                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white cursor-pointer">
                     Quick Add
                   </button>
-                </div>
               </div>
 
-              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
+              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-[min-content] flex flex-col">
+                <Link href="/product" className="no-underline">
                 <Image
                   src={plasticbottol}
                   alt="Product"
                   className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
                 />
-                <div className="mt-auto">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10">
+                <div className="mt-auto pt-4">
+                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
                     Honey Nuts
                   </p>
-                  <p className="mt-4 font-semibold">Tk 1,500.00</p>
-                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
+                  <p className="mt-4 font-semibold text-black hover:text-green-700">Tk 1,500.00</p>
+                </div>
+                </Link>
+                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white cursor-pointer">
                     Quick Add
                   </button>
-                </div>
               </div>
 
-              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
+              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-[min-content] flex flex-col">
+                <Link href="/product" className="no-underline">
                 <Image
                   src={cosmeticsProduct}
                   alt="Product"
                   className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
                 />
-                <div className="mt-auto">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10">
+                <div className="mt-auto pt-4">
+                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
                     Honey Nuts
                   </p>
-                  <p className="mt-4 font-semibold">Tk 1,500.00</p>
-                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
+                  <p className="mt-4 font-semibold text-black hover:text-green-700">Tk 1,500.00</p>
+                </div>
+                </Link>
+                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white cursor-pointer">
                     Quick Add
                   </button>
-                </div>
               </div>
 
-              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
+              <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-[min-content] flex flex-col">
+                <Link href="/product" className="no-underline">
                 <Image
                   src={flowerpot}
                   alt="Product"
                   className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
                 />
-                <div className="mt-auto">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10">
+                <div className="mt-auto pt-4">
+                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
                     Flower Pot
                   </p>
-                  <p className="mt-4 font-semibold">Tk 190.00</p>
-                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
+                  <p className="mt-4 font-semibold text-black hover:text-green-700">Tk 190.00</p>
+                </div>
+                </Link>
+                  <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white cursor-pointer">
                     Quick Add
                   </button>
-                </div>
               </div>
             </div>
           </main>

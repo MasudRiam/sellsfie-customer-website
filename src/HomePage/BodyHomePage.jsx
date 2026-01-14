@@ -8,6 +8,7 @@ import flowerpot from "@/assets/img/product/flower-pot.jpg";
 import sllsfieShortLogo from "@/assets/logo/sellsfiemini.png";
 import { ShopCarousel } from "./ShopCarousel";
 import Link from "next/link";
+import CartButton from "@/components/cart/CartButton";
 
 const BodyHomePage = () => {
   const collections = [
@@ -49,9 +50,7 @@ const BodyHomePage = () => {
                   </p>
                 </div>
               </Link>
-              <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
-                Quick Add
-              </button>
+              <CartButton product={{ id: 1, name: "Cusmetics products", price: 1550.00, img: cosmeticsProduct }} />
             </div>
 
             <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
@@ -70,9 +69,7 @@ const BodyHomePage = () => {
                   </p>
                 </div>
               </Link>
-              <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
-                Quick Add
-              </button>
+              <CartButton product={{ id: 2, name: "Gawa Ghee / ঘি", price: 1800.00, img: pizzaproduct }} />
             </div>
 
             <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col relative">
@@ -97,9 +94,7 @@ const BodyHomePage = () => {
                   </p>
                 </div>
               </Link>
-              <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
-                Quick Add
-              </button>
+              <CartButton product={{ id: 3, name: "Natural Honeycomb 1kg", price: 2250.00, img: cosmeticsProduct }} />
             </div>
 
             <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
@@ -118,9 +113,7 @@ const BodyHomePage = () => {
                   </p>
                 </div>
               </Link>
-              <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
-                Quick Add
-              </button>
+              <CartButton product={{ id: 4, name: "Honey Nuts", price: 1500.00, img: pizzaproduct }} />
             </div>
 
             <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
@@ -139,9 +132,7 @@ const BodyHomePage = () => {
                   </p>
                 </div>
               </Link>
-              <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
-                Quick Add
-              </button>
+              <CartButton product={{ id: 5, name: "Honey Nuts", price: 1500.00, img: plasticbottol }} />
             </div>
 
             <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
@@ -160,9 +151,7 @@ const BodyHomePage = () => {
                   </p>
                 </div>
               </Link>
-              <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
-                Quick Add
-              </button>
+              <CartButton product={{ id: 6, name: "Honey Nuts", price: 1500.00, img: cosmeticsProduct }} />
             </div>
 
             <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
@@ -181,9 +170,7 @@ const BodyHomePage = () => {
                   </p>
                 </div>
               </Link>
-              <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white">
-                Quick Add
-              </button>
+              <CartButton product={{ id: 7, name: "Flower Pot", price: 190.00, img: flowerpot }} />
             </div>
           </div>
         </section>
