@@ -1,15 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { FiMenu, FiShoppingBag, FiUser } from "react-icons/fi";
 import { GoSearch } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
 import Link from "next/link";
+import { useCart } from "@/context/cart-context";
+import SearchSheet from "@/context/search-sheet";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { setOpen: setCartOpen, open: cartOpen } = useCart();
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -20,6 +22,8 @@ const Navbar = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+
 
   const categories = [
     "OFFER ZONE",
@@ -65,12 +69,12 @@ const Navbar = () => {
             </div>
 
             <div className="flex items-center gap-4">
-              <GoSearch className="text-xl text-fren" />
+              <SearchSheet />
               <div className="relative">
-                <FiShoppingBag className="text-xl text-fren" />
-                <span className="absolute -top-2 -right-2 bg-fren text-white text-xs rounded-full px-1">
+                <FiShoppingBag onClick={() => setCartOpen(true)} className="text-xl text-fren" />
+                {/* <span className="absolute -top-2 -right-2 bg-fren text-white text-xs rounded-full px-1">
                   9
-                </span>
+                </span> */}
               </div>
             </div>
           </div>
@@ -120,7 +124,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center justify-between px-12 py-4">
-            <GoSearch className="text-xl text-fren cursor-pointer" />
+            <SearchSheet />
             <div className="flex items-center gap-2">
               <Link href="/" className="flex items-center gap-2 cursor-pointer">
                 <img src={sellsfieLogo.src} alt="Logo" className="h-10" />
@@ -130,10 +134,10 @@ const Navbar = () => {
             <div className="flex items-center gap-6">
               <FiUser className="text-xl text-fren cursor-pointer" />
               <div className="relative">
-                <FiShoppingBag className="text-xl text-fren cursor-pointer" />
-                <span className="absolute -top-2 -right-2 bg-fren text-white text-xs rounded-full px-1">
+                <FiShoppingBag onClick={() => setCartOpen(true)} className="text-xl text-fren cursor-pointer" />
+                {/* <span className="absolute -top-2 -right-2 bg-fren text-white text-xs rounded-full px-1">
                   9
-                </span>
+                </span> */}
               </div>
             </div>
           </div>

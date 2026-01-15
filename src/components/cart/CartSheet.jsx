@@ -2,6 +2,7 @@ import React from "react";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
@@ -23,6 +24,9 @@ const CartSheet = () => {
       >
         <SheetHeader className="px-4 py-4 border-b">
           <SheetTitle className="text-lg font-medium">Shopping Cart</SheetTitle>
+          <SheetDescription>
+            {""}
+          </SheetDescription>
         </SheetHeader>
 
         <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-5">
