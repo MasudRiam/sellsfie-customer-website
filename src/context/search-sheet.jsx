@@ -23,7 +23,7 @@ const SearchSheet = () => {
       <SheetTrigger asChild>
         <button
           aria-label="Search"
-          className="p-2 rounded-md hover:bg-muted transition cursor-pointer"
+          className="hover:bg-muted transition cursor-pointer"
         >
           <Search className="h-5 w-5 text-fren" />
         </button>
@@ -32,11 +32,11 @@ const SearchSheet = () => {
       {/* Search Sheet */}
       <SheetContent side="top" className="border-b">
         <SheetHeader>
-          <SheetTitle>
-            {""}
+          <SheetTitle className="flex justify-center font-medium mb-0">
+            "What are you looking for?"
           </SheetTitle>
         </SheetHeader>
-        <div className="mx-auto max-w-4xl py-6">
+        <div className="mx-auto max-w-4xl pb-4">
           <div className="flex gap-2">
             <Input
               autoFocus
@@ -46,10 +46,10 @@ const SearchSheet = () => {
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleSearch();
               }}
-              className="h-12 text-base md:w-2xl lg:w-3xl focus-visible:border-green-700 focus-visible:ring-white"
+              className="h-11 text-base md:w-2xl lg:w-3xl focus-visible:border-green-700 focus-visible:ring-white"
             />
 
-            <Button onClick={handleSearch} className="h-12 w-18 bg-green-700">
+            <Button onClick={handleSearch} className="h-11 w-18 bg-green-700">
               <Search size={18} className=" text-white" />
             </Button>
           </div>
