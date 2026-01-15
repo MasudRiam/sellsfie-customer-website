@@ -20,23 +20,16 @@ const Navbar = () => {
 
   useEffect(() => {
     const onScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrolled(currentScrollY > 10);
-      setShowCategory((prev) => {
-        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-          return false;
-        }
-        if (currentScrollY < lastScrollY.current) {
-          return true;
-        }
-        return prev;
-      });
+      const y = window.scrollY;
+
+      setScrolled(y > 10);
+      setShowCategory(y < lastScrollY.current || y < 100);
+
+      lastScrollY.current = y;
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const categories = [
@@ -61,7 +54,7 @@ const Navbar = () => {
   });
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-gray-200">
+      <header className="sticky top-0 border-b z-50 w-full border-gray-200">
         <div className="relative">
           {scrolled && (
             <div
@@ -97,7 +90,10 @@ const Navbar = () => {
                   9
                 </span> */}
                 </div>
+                <Link href="/login">
+                
                 <FiUser className="text-xl text-fren cursor-pointer" />
+                </Link>
               </div>
             </div>
 
@@ -166,7 +162,10 @@ const Navbar = () => {
                   9
                   </span> */}
                 </div>
-                  <FiUser className="text-xl text-fren cursor-pointer" />
+                <Link href="/login">
+                
+                <FiUser className="text-xl text-fren cursor-pointer" />
+                </Link>
               </div>
             </div>
           </div>
@@ -174,7 +173,7 @@ const Navbar = () => {
       </header>
       <div className="hidden md:block h-20 xl:h-13 relative overflow-hidden">
         <nav
-            className={`absolute inset-x-0 top-0
+          className={`absolute inset-x-0 top-0
           transition-transform duration-300 ease-in-out
           ${showCategory ? "translate-y-0" : "-translate-y-full"}
         `}
