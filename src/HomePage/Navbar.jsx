@@ -157,7 +157,6 @@ const Navbar = () => {
               </div>
 
               <div className="flex items-center gap-6">
-                <FiUser className="text-xl text-fren cursor-pointer" />
                 <div className="relative">
                   <FiShoppingBag
                     onClick={() => setCartOpen(true)}
@@ -165,19 +164,20 @@ const Navbar = () => {
                   />
                   {/* <span className="absolute -top-2 -right-2 bg-fren text-white text-xs rounded-full px-1">
                   9
-                </span> */}
+                  </span> */}
                 </div>
+                  <FiUser className="text-xl text-fren cursor-pointer" />
               </div>
             </div>
           </div>
         </div>
       </header>
-      <div className="hidden md:block h-20 relative overflow-hidden">
+      <div className="hidden md:block h-20 xl:h-13 relative overflow-hidden">
         <nav
-          className={`absolute inset-x-0 top-0
-      transition-transform duration-300 ease-in-out
-      ${showCategory ? "translate-y-0" : "-translate-y-full"}
-    `}
+            className={`absolute inset-x-0 top-0
+          transition-transform duration-300 ease-in-out
+          ${showCategory ? "translate-y-0" : "-translate-y-full"}
+        `}
         >
           <ul className="flex flex-wrap justify-center gap-6 px-6 py-2 text-sm">
             {categories.map((item, index) => (

@@ -33,7 +33,7 @@ const SearchSheet = () => {
       <SheetContent side="top" className="border-b">
         <SheetHeader>
           <SheetTitle className="flex justify-center font-medium mb-0">
-            "What are you looking for?"
+            What are you looking for?
           </SheetTitle>
         </SheetHeader>
         <div className="mx-auto max-w-4xl pb-4">
