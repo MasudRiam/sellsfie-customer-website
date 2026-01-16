@@ -61,24 +61,24 @@ export function LoginForm({
               <Field>
                 <div className="flex items-center">
                   <FieldLabel htmlFor="password">Password</FieldLabel>
-                  <a href="#" className="ml-auto text-sm underline-offset-4 hover:underline">
+                  <a href="#" className="ml-auto text-sm no-underline hover:underline">
                     Forgot your password?
                   </a>
                 </div>
                 <Input id="password" type="password" required />
               </Field>
               <Field>
-                <Button type="submit">Login</Button>
+                <Button type="submit" className="bg-green-700">Login</Button>
                 <FieldDescription className="text-center">
-                  Don&apos;t have an account? <Link href="/signup">Sign up</Link>
+                  Don&apos;t have an account? <Link href="/signup" className="no-underline hover:underline">Sign up</Link>
                 </FieldDescription>
               </Field>
             </FieldGroup>
           </form>
         </CardContent>
       </Card>
-      <FieldDescription className="px-6 text-center">
-        By clicking continue, you agree to our <Link href="#">Terms of Service</Link>{" "}
+      <FieldDescription className="px-6 text-center no-underline">
+        By clicking continue, you agree to our <Link href="#" className="no-underline">Terms of Service</Link>{" "}
         and <Link href="#">Privacy Policy</Link>.
       </FieldDescription>
     </div>
