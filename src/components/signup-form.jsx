@@ -14,6 +14,7 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import Link from "next/link";
 
 export function SignupForm({
   className,
@@ -57,9 +58,9 @@ export function SignupForm({
                 </FieldDescription>
               </Field>
               <Field>
-                <Button type="submit">Create Account</Button>
+                <Button type="submit" className="bg-green-700">Create Account</Button>
                 <FieldDescription className="text-center">
-                  Already have an account? <a href="#">Sign in</a>
+                  Already have an account? <Link href="/login" className="no-underline hover:underline">Log In</Link>
                 </FieldDescription>
               </Field>
             </FieldGroup>
@@ -67,8 +68,8 @@ export function SignupForm({
         </CardContent>
       </Card>
       <FieldDescription className="px-6 text-center">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
+        By clicking continue, you agree to our <Link href="#" className="no-underline">Terms of Service</Link>{" "}
+        and <Link href="#" className="no-underline">Privacy Policy</Link>.
       </FieldDescription>
     </div>
   );
