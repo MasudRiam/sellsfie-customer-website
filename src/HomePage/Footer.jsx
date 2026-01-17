@@ -61,14 +61,14 @@ const Footer = () => {
               </h4>
               <ul className="mt-4 space-y-3 text-sm text-gray-700">
                 <ul>
-                  <a href="/" className="text-black-cus no-underline hover:underline">
+                  <Link href="/customer-care" className="text-black-cus no-underline hover:underline">
                     গ্রাহক সেবা
-                  </a>
+                  </Link>
                 </ul>
                 <ul>
-                  <a href="/" className="text-black-cus no-underline hover:underline">
+                  <Link href="/" className="text-black-cus no-underline hover:underline">
                     Contact
-                  </a>
+                  </Link>
                 </ul>
               </ul>
 
