@@ -1,9 +1,14 @@
 import React from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-
+import Image from "next/image";
+import bodymainImage from "@/assets/img/coconut.jpg";
 const page = () => {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-20">
+    <div className="pb-20">
+        <div className="w-full h-auto">
+           <Image src={bodymainImage} alt="Main Body" className="w-full h-auto" />
+       </div>
+    <section className="max-w-4xl mx-auto px-4 mt-10">
       <h1 className="text-4xl md:text-5xl font-semibold text-center mb-14">
         Frequently Asked Questions
       </h1>
@@ -41,6 +46,7 @@ const page = () => {
         </AccordionItem>
       </Accordion>
     </section>
+    </div>
   );
 };
 
