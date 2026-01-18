@@ -66,7 +66,7 @@ const Footer = () => {
                   </Link>
                 </ul>
                 <ul>
-                  <Link href="/" className="text-black-cus no-underline hover:underline">
+                  <Link href="/contact" className="text-black-cus no-underline hover:underline">
                     Contact
                   </Link>
                 </ul>
