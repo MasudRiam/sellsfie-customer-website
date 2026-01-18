@@ -43,14 +43,14 @@ const Footer = () => {
                   </Link>
                 </ul>
                 <ul>
-                  <a href="/" className="text-black-cus no-underline hover:underline">
+                  <Link href="/return-policy" className="text-black-cus no-underline hover:underline">
                     Return Policy
-                  </a>
+                  </Link>
                 </ul>
                 <ul>
-                  <a href="/" className="text-black-cus no-underline hover:underline">
+                  <Link href="/refund-policy" className="text-black-cus no-underline hover:underline">
                     Refund Policy
-                  </a>
+                  </Link>
                 </ul>
               </ul>
             </div>
