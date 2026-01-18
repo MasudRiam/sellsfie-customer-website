@@ -91,8 +91,7 @@ const Navbar = () => {
                 </span> */}
                 </div>
                 <Link href="/login">
-                
-                <FiUser className="text-xl text-fren cursor-pointer" />
+                  <FiUser className="text-xl text-fren cursor-pointer" />
                 </Link>
               </div>
             </div>
@@ -163,8 +162,7 @@ const Navbar = () => {
                   </span> */}
                 </div>
                 <Link href="/login">
-                
-                <FiUser className="text-xl text-fren cursor-pointer" />
+                  <FiUser className="text-xl text-fren cursor-pointer" />
                 </Link>
               </div>
             </div>
