@@ -5,7 +5,6 @@ import ProductTab from "./productTab";
 import plasticBottol from "@/assets/img/product/plastic-bottol.jpg";
 import cosmetics from "@/assets/img/product/cosmetics.png";
 import ImgCarousel from "./imgCarousel";
-import AddToCart from "@/components/cart/AddToCart";
 
 
 const productsImg = [
@@ -67,7 +66,9 @@ const page = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <AddToCart product={{id: 1, name: 'Vegetable Pizza', price: 55.00}} />
+            <button className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700">
+              Add to cart
+            </button>
             <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800">
               Buy it now
             </button>
