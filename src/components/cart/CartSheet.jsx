@@ -24,9 +24,7 @@ const CartSheet = () => {
       >
         <SheetHeader className="px-4 py-4 border-b">
           <SheetTitle className="text-lg font-medium">Shopping Cart</SheetTitle>
-          <SheetDescription>
-            {""}
-          </SheetDescription>
+          <SheetDescription>{""}</SheetDescription>
         </SheetHeader>
 
         <div className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-5">
@@ -88,18 +86,20 @@ const CartSheet = () => {
             <span className="font-semibold">Tk {subtotal.toFixed(2)}</span>
           </div>
 
-          <Button className="w-full bg-green-700 text-white cursor-pointer">
-            💳 Pay Online
-          </Button>
+          <Link href="/checkout" className="">
+            <Button onClick={() => setOpen(false)} className="w-full mb-1 bg-green-700 text-white cursor-pointer">
+              💳 Pay Online
+            </Button>
+          </Link>
 
           <Button className="w-full bg-orange-500 text-white cursor-pointer">
             🛒 ক্যাশ অন ডেলিভারিতে অর্ডার করুন
           </Button>
 
-          <Link
-            href="/cart"
-            onClick={() => setOpen(false)}>
-          <p className="text-center text-sm cursor-pointer text-black hover:text-green-700">View Cart</p>
+          <Link href="/cart" onClick={() => setOpen(false)}>
+            <p className="text-center text-sm cursor-pointer text-black hover:text-green-700">
+              View Cart
+            </p>
           </Link>
         </div>
       </SheetContent>
