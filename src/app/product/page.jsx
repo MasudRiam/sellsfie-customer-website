@@ -5,6 +5,7 @@ import ProductTab from "./productTab";
 import plasticBottol from "@/assets/img/product/plastic-bottol.jpg";
 import cosmetics from "@/assets/img/product/cosmetics.png";
 import ImgCarousel from "./imgCarousel";
+import AddToCart from "@/components/cart/AddToCart";
 
 
 const productsImg = [
@@ -14,6 +15,7 @@ const productsImg = [
 ]
 
 const page = () => {
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -65,9 +67,7 @@ const page = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700">
-              Add to cart
-            </button>
+            <AddToCart product={{id: 1, name: 'Vegetable Pizza', price: 55.00}} />
             <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800">
               Buy it now
             </button>

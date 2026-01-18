@@ -14,6 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import Link from "next/link"
 
 const shops = [
   { id: 1, image: cosmeticsProduct, name: "Shop One" },
@@ -47,6 +48,7 @@ export function ShopCarousel() {
     <CarouselContent>
     {shops.map((shop, index) => (
         <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/5 sm:basis-1/3 basis-1/2 p-2">
+        <Link href={`/product`} className="no-underline text-black">
         <div className="p-2">
             <div className="relative aspect-square rounded-full overflow-hidden group">
             <Image
@@ -73,6 +75,7 @@ export function ShopCarousel() {
               {shop.name}
             </p>
         </div>
+        </Link>
         </CarouselItem>
     ))}
     </CarouselContent>
