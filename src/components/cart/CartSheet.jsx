@@ -92,7 +92,7 @@ const CartSheet = () => {
             </Button>
           </Link>
 
-          <Button className="w-full bg-orange-500 text-white cursor-pointer">
+          <Button className="w-full bg-gray-800 text-white hover:bg-gray-500 cursor-pointer">
             🛒 ক্যাশ অন ডেলিভারিতে অর্ডার করুন
           </Button>
 

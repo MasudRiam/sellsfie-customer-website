@@ -34,23 +34,23 @@ export function SignupForm({
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="name">Full Name</FieldLabel>
-                <Input id="name" type="text" placeholder="John Doe" required />
+                <Input id="name" type="text" placeholder="John Doe" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
               </Field>
               <Field>
                 <FieldLabel htmlFor="email">Email</FieldLabel>
-                <Input id="email" type="email" placeholder="m@example.com" required />
+                <Input id="email" type="email" placeholder="m@example.com" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
               </Field>
               <Field>
                 <Field className="grid grid-cols-2 gap-4">
                   <Field>
                     <FieldLabel htmlFor="password">Password</FieldLabel>
-                    <Input id="password" type="password" required />
+                    <Input id="password" type="password" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
                   </Field>
                   <Field>
                     <FieldLabel htmlFor="confirm-password">
                       Confirm Password
                     </FieldLabel>
-                    <Input id="confirm-password" type="password" required />
+                    <Input id="confirm-password" type="password" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
                   </Field>
                 </Field>
                 <FieldDescription>
@@ -58,7 +58,7 @@ export function SignupForm({
                 </FieldDescription>
               </Field>
               <Field>
-                <Button type="submit" className="bg-green-700">Create Account</Button>
+                <Button type="submit" className="bg-green-700 cursor-pointer">Create Account</Button>
                 <FieldDescription className="text-center">
                   Already have an account? <Link href="/login" className="no-underline hover:underline">Log In</Link>
                 </FieldDescription>
@@ -67,7 +67,7 @@ export function SignupForm({
           </form>
         </CardContent>
       </Card>
-      <FieldDescription className="px-6 text-center">
+      <FieldDescription className="px-6 text-center no-underline">
         By clicking continue, you agree to our <Link href="#" className="no-underline">Terms of Service</Link>{" "}
         and <Link href="#" className="no-underline">Privacy Policy</Link>.
       </FieldDescription>

@@ -35,7 +35,7 @@ const FilterProducts = () => {
   ];
 
   return (
-    <aside className="w-full max-w-xs p-4 sm:mr-2 xl:ml-7 bg-white">
+    <aside className="w-full max-w-xs p-4 sm:mr-0 xl:ml-7 bg-white">
       <h1 className="text-lg font-semibold mb-4">Filters</h1>
 
       <Accordion

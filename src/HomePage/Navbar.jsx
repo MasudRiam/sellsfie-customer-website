@@ -8,6 +8,10 @@ import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
 import Link from "next/link";
 import { useCart } from "@/context/cart-context";
 import SearchSheet from "@/context/search-sheet";
+import { Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { CiLogin } from "react-icons/ci";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -140,9 +144,31 @@ const Navbar = () => {
               </div>
             </div>
 
-            <div className="hidden md:flex items-center justify-between px-12 py-4">
-              <SearchSheet />
-              <div className="flex items-center gap-2">
+            <div className="hidden md:flex items-center justify-between mx-auto max-w-[1280px] px-4 py-4 sm:px-3">
+              {/* <SearchSheet /> */}
+              <div className="flex justify-start">
+                <div className="lg:max-w-90 md:max-w-60 max-w-xl">
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Search here..."
+                      // value={query}
+                      // onChange={(e) => setQuery(e.target.value)}
+                      // onKeyDown={(e) => {
+                      //   if (e.key === "Enter") handleSearch();
+                      // }}
+                      className="h-9 text-base md:w-2xl lg:w-2xl focus-visible:border-green-700"
+                    />
+
+                    <Button
+                      // onClick={handleSearch}
+                      className="h-9 w-15 bg-green-700"
+                    >
+                      <Search size={18} className=" text-white" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 lg:mr-20 md:mr-7">
                 <Link
                   href="/"
                   className="flex items-center gap-2 cursor-pointer"
@@ -151,19 +177,31 @@ const Navbar = () => {
                 </Link>
               </div>
 
-              <div className="flex items-center gap-6">
-                <div className="relative">
+              <div className="flex items-center gap-2">
+                {/* <Link href="/login">
+                  <FiUser className="text-xl text-fren cursor-pointer" />
+                </Link> */}
+                <Link
+                  href="/login"
+                  className="flex items-center gap-1 bg-gray-100 border-gray-200 p-0.5 border rounded-sm hover:bg-green-300 no-underline"
+                >
+                  <CiLogin size={18} className="text-green-700" />
+                  <span className="text-green-700">Login</span>
+                </Link>
+
+                <div
+                  className="relative flex items-center gap-1 bg-gray-100 border-gray-200 p-0.5 border rounded-sm hover:bg-green-300 cursor-pointer"
+                  onClick={() => setCartOpen(true)}
+                >
                   <FiShoppingBag
-                    onClick={() => setCartOpen(true)}
-                    className="text-xl text-fren cursor-pointer"
+                    className="text-xl text-green-700 cursor-pointer"
+                    size={18}
                   />
                   {/* <span className="absolute -top-2 -right-2 bg-fren text-white text-xs rounded-full px-1">
                   9
                   </span> */}
+                  <span className="text-green-700">Cart</span>
                 </div>
-                <Link href="/login">
-                  <FiUser className="text-xl text-fren cursor-pointer" />
-                </Link>
               </div>
             </div>
           </div>
@@ -176,18 +214,18 @@ const Navbar = () => {
           ${showCategory ? "translate-y-0" : "-translate-y-full"}
         `}
         >
-          <ul className="flex flex-wrap justify-center gap-6 px-6 py-2 text-sm">
+          <div className="flex flex-wrap justify-center gap-6 px-6 py-2 text-sm bg-gray-50">
             {categories.map((item, index) => (
-              <li key={index} className="cursor-pointer hover:underline">
+              <div key={index} className="cursor-pointer hover:underline">
                 <Link
                   href={productHref(item)}
-                  className="no-underline text-black visited:text-fren hover:text-robinhood"
+                  className="no-underline text-black visited:text-fren hover:text-robinhood text-base"
                 >
                   {item}
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </nav>
       </div>
     </>

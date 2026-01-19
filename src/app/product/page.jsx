@@ -69,7 +69,7 @@ const page = () => {
             <button className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700">
               Add to cart
             </button>
-            <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800">
+            <button className="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-500">
               Buy it now
             </button>
           </div>
@@ -99,7 +99,7 @@ const page = () => {
               text: "Quality comes first and products are built to last.",
             },
           ].map((item, i) => (
-            <div key={i} className="bg-gray-100 px-2 py-5 text-center">
+            <div key={i} className="bg-gray-100 px-2 py-5 text-center hover:shadow-md h-[min-content] transition">
               <h3 className="font-semibold mb-2">{item.title}</h3>
               <p className="text-sm text-gray-600">{item.text}</p>
             </div>
