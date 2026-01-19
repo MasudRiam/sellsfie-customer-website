@@ -144,7 +144,7 @@ const Navbar = () => {
               </div>
             </div>
 
-            <div className="hidden md:flex items-center justify-between mx-auto max-w-[1280px] px-4 py-4 sm:px-3">
+            <div className="hidden md:flex items-center justify-between mx-auto max-w-7xl px-4 py-4 sm:px-3">
               {/* <SearchSheet /> */}
               <div className="flex justify-start">
                 <div className="lg:max-w-90 md:max-w-60 max-w-xl">
@@ -159,12 +159,12 @@ const Navbar = () => {
                       className="h-9 text-base md:w-2xl lg:w-2xl focus-visible:border-green-700"
                     />
 
-                    <Button
+                    <button
                       // onClick={handleSearch}
-                      className="h-9 w-15 bg-green-700"
+                      className="bg-green-700 hover:bg-[#2e2e2e] text-white px-4 cursor-pointer rounded-md flex items-center justify-center"
                     >
-                      <Search size={18} className=" text-white" />
-                    </Button>
+                      <Search size={18}/>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -183,24 +183,22 @@ const Navbar = () => {
                 </Link> */}
                 <Link
                   href="/login"
-                  className="flex items-center gap-1 bg-gray-100 border-gray-200 p-0.5 border rounded-sm hover:bg-green-300 no-underline"
+                  className="flex items-center px-2 py-1 gap-1 border rounded-sm bg-green-700 hover:bg-[#2e2e2e] text-white no-underline"
                 >
-                  <CiLogin size={18} className="text-green-700" />
-                  <span className="text-green-700">Login</span>
+                  <CiLogin size={18} />
+                  <span>Login</span>
                 </Link>
 
                 <div
-                  className="relative flex items-center gap-1 bg-gray-100 border-gray-200 p-0.5 border rounded-sm hover:bg-green-300 cursor-pointer"
+                  className="relative flex items-center gap-1 border rounded-sm bg-green-700 hover:bg-[#2e2e2e] text-white px-2 py-1 cursor-pointer"
                   onClick={() => setCartOpen(true)}
                 >
-                  <FiShoppingBag
-                    className="text-xl text-green-700 cursor-pointer"
-                    size={18}
-                  />
+                  <FiShoppingBag size={18} />
+
                   {/* <span className="absolute -top-2 -right-2 bg-fren text-white text-xs rounded-full px-1">
                   9
                   </span> */}
-                  <span className="text-green-700">Cart</span>
+                  <span>Cart</span>
                 </div>
               </div>
             </div>
