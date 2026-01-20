@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import bodymainImage from "@/assets/img/coconut.jpg";
@@ -10,7 +12,11 @@ import { ShopCarousel } from "./ShopCarousel";
 import Link from "next/link";
 import CartButton from "@/components/cart/CartButton";
 
+import { useMefetchData } from "@/utility/hooks/useMe";
+
 const BodyHomePage = () => {
+  const { data: meData, isLoading, isError } = useMefetchData();
+  console.log ("Me Data:", meData);
   const collections = [
     { title: "Organic Oil", img: cosmeticsProduct },
     { title: "HONEY (মধু)", img: plasticbottol },

@@ -4,6 +4,9 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/HomePage/Navbar";
 import Footer from "@/HomePage/Footer";
 import CartRootProvider from "@/components/providers/CartProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export default function LayoutWrapper({ children }) {
   const pathname = usePathname();
@@ -21,9 +24,11 @@ export default function LayoutWrapper({ children }) {
   return (
     <>
       <CartRootProvider>
-        {!hideNavbarFooter && <Navbar />}
-        <main className="flex-grow">{children}</main>
-        {!hideNavbarFooter && <Footer />}
+        <QueryClientProvider client={queryClient}>
+          {!hideNavbarFooter && <Navbar />}
+          <main className="flex-grow">{children}</main>
+          {!hideNavbarFooter && <Footer />}
+        </QueryClientProvider>
       </CartRootProvider>
     </>
   );
