@@ -13,10 +13,15 @@ import Link from "next/link";
 import CartButton from "@/components/cart/CartButton";
 
 import { useMefetchData } from "@/utility/hooks/useMe";
+import { useAllProductfetchData } from "@/utility/hooks/useAllProduct";
 
 const BodyHomePage = () => {
   const { data: meData, isLoading, isError } = useMefetchData();
   console.log ("Me Data:", meData);
+
+  const {data: allProductData, isLoading: allProductLoading, isError: allProductError } = useAllProductfetchData();
+  console.log("All Product Data:", allProductData);
+
   const collections = [
     { title: "Organic Oil", img: cosmeticsProduct },
     { title: "HONEY (মধু)", img: plasticbottol },
@@ -25,6 +30,8 @@ const BodyHomePage = () => {
     { title: "Tea/Snacks (চা-নাস্তা)", img: flowerpot },
     { title: "Tea/Snacks (চা-নাস্তা)", img: flowerpot },
   ];
+
+
   return (
     <>
       {/* banner image */}
@@ -40,144 +47,36 @@ const BodyHomePage = () => {
 
         <section className="mx-auto w-full max-w-[1280px] px-4 py-4 sm:px-3 sm:py-8">
           <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-5 gap-5 items-stretch">
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={cosmeticsProduct}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
+          {/* ternary operator if loading and if error */}
+           { allProductLoading ? (
+              <p>Loading...</p>
+            ) : allProductError ? (
+              <p>Something went wrong</p>
+            ) : (
+              allProductData.map((product) => (
+                <div key={product.id} className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
+                
+                <Link href="/product" className="no-underline">
+                  <Image
+                    src={product?.thumbnail_image?.url}
+                     width={468}  
+                     height={268}
+                    alt={product?.name}              
+                    className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
                 />
                 <div className="mt-auto pt-4">
                   <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Cusmetics products
+                    {product?.name}
                   </p>
                   <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 1,550.00
+                    Tk {product?.unit_price}
                   </p>
                 </div>
               </Link>
-              <CartButton product={{ id: 1, name: "Cusmetics products", price: 1550.00, img: cosmeticsProduct }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={pizzaproduct}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Gawa Ghee / ঘি
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 1,800.00
-                  </p>
+              <CartButton product={{ id: product.id, name: product.name, price: product.unit_price, img: product?.thumbnail_image?.url }} />
                 </div>
-              </Link>
-              <CartButton product={{ id: 2, name: "Gawa Ghee / ঘি", price: 1800.00, img: pizzaproduct }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col relative">
-              <Link href="/product" className="no-underline">
-                <span className="absolute top-3 left-3 rounded-full bg-green-100 px-3 py-1 text-xs text-green-700">
-                  ON SALE
-                </span>
-                <Image
-                  src={cosmeticsProduct}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Natural Honeycomb 1kg
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 2,250.00{" "}
-                    <span className="ml-2 text-sm text-gray-400 line-through">
-                      Tk 2,500.00
-                    </span>
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 3, name: "Natural Honeycomb 1kg", price: 2250.00, img: cosmeticsProduct }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={pizzaproduct}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Honey Nuts
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 1,500.00
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 4, name: "Honey Nuts", price: 1500.00, img: pizzaproduct }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={plasticbottol}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Honey Nuts
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 1,500.00
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 5, name: "Honey Nuts", price: 1500.00, img: plasticbottol }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={cosmeticsProduct}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Honey Nuts
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 1,500.00
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 6, name: "Honey Nuts", price: 1500.00, img: cosmeticsProduct }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={flowerpot}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Flower Pot
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 190.00
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 7, name: "Flower Pot", price: 190.00, img: flowerpot }} />
-            </div>
+          ))
+            )}
           </div>
         </section>
 
