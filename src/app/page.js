@@ -1,5 +1,6 @@
 import React from "react";
-import HomePage from "@/HomePage/BodyHomePage.jsx";
+// import BodyHomePage from "@/HomePage/BodyHomePage.jsx";
+import HomePage from "./homepage";
 
 export default function Home() {
   return (
