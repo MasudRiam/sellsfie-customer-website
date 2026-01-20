@@ -43,7 +43,7 @@ const CartSheet = () => {
               <div className="flex-1">
                 <p className="text-sm">{item.name}</p>
                 <p className="text-sm font-medium mt-1">
-                  Tk {item.price.toFixed(2)}
+                  Tk {item.price}
                 </p>
 
                 <div className="mt-2 flex items-center gap-3">
@@ -83,7 +83,7 @@ const CartSheet = () => {
         <div className="px-4 py-2 space-y-3">
           <div className="flex justify-between text-sm">
             <span>Subtotal</span>
-            <span className="font-semibold">Tk {subtotal.toFixed(2)}</span>
+            <span className="font-semibold">Tk {subtotal}</span>
           </div>
 
           <Link href="/checkout" className="">
