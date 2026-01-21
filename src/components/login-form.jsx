@@ -49,8 +49,12 @@ export function LoginForm({
                 Or continue with
               </FieldSeparator>
               <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
-                <Input id="email" type="email" placeholder="m@example.com" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
+                <FieldLabel htmlFor="email">Email/Phone</FieldLabel>
+                <Input id="email" type="text" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="shopId">Shop id</FieldLabel>
+                <Input id="shopId" type="number" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
               </Field>
               <Field>
                 <div className="flex items-center">

@@ -1,25 +1,63 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+"use client";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import axiosInstance from "@/utility/axios";
+import { Eye, EyeOff } from "lucide-react";
 
-export function SignupForm({
-  className,
-  ...props
-}) {
+export function SignupForm({ className, ...props }) {
+  const router = useRouter();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [confirmShowPassword, setConfirmShowPassword] = useState(false);
+
+  const mutation = useMutation({
+    mutationFn: async (fromData) => {
+      const res = await axiosInstance.post("api/client/signup", fromData);
+      return res.data;
+    },
+    onSuccess: () => {
+      toast.success("Email sent for verification | Please verify your email");
+      router.push("/auth/verification");
+    },
+    onError: (error) => {
+      toast.error(error?.response?.data?.message || "Signup failed");
+    },
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const fromData = new FormData(e.target);
+    const data = Object.fromEntries(fromData.entries());
+
+    if (data.password !== data.password_confirmation) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    mutation.mutate(data);
+  };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -29,47 +67,123 @@ export function SignupForm({
             Enter your email below to create your account
           </CardDescription>
         </CardHeader>
+
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit}>
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="name">Full Name</FieldLabel>
-                <Input id="name" type="text" placeholder="John Doe" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
+                <Input
+                  id="name"
+                  name="name"
+                  required
+                  className="focus-visible:border-green-700 focus-visible:ring-white"
+                />
               </Field>
+
               <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
-                <Input id="email" type="email" placeholder="m@example.com" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
+                <FieldLabel htmlFor="email">Email/Phone</FieldLabel>
+                <Input
+                  id="email"
+                  name="email"
+                  required
+                  className="focus-visible:border-green-700 focus-visible:ring-white"
+                />
               </Field>
+
               <Field>
-                <Field className="grid grid-cols-2 gap-4">
-                  <Field>
-                    <FieldLabel htmlFor="password">Password</FieldLabel>
-                    <Input id="password" type="password" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
-                  </Field>
-                  <Field>
-                    <FieldLabel htmlFor="confirm-password">
-                      Confirm Password
-                    </FieldLabel>
-                    <Input id="confirm-password" type="password" required className="focus-visible:border-green-700 focus-visible:ring-white"/>
-                  </Field>
+                <FieldLabel htmlFor="shop_id">Shop Id</FieldLabel>
+                <Input
+                  id="shop_id"
+                  name="shop_id"
+                  required
+                  className="focus-visible:border-green-700 focus-visible:ring-white"
+                />
+              </Field>
+
+              <Field>
+                <FieldLabel htmlFor="address">Address</FieldLabel>
+                <Input
+                  id="address"
+                  name="address"
+                  required
+                  className="focus-visible:border-green-700 focus-visible:ring-white"
+                />
+              </Field>
+
+              <Field className="grid grid-cols-2 gap-4">
+                <Field>
+                  <FieldLabel htmlFor="password">Password</FieldLabel>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                      required
+                      className="focus-visible:border-green-700 focus-visible:ring-white pr-10"
+                    />
+                    <button
+                      onClick={() => setShowPassword(!showPassword)}
+                      type="button"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 cursor-pointer"
+                    >
+                      {showPassword ? <EyeOff /> : <Eye />}
+                    </button>
+                  </div>
                 </Field>
-                <FieldDescription>
-                  Must be at least 8 characters long.
-                </FieldDescription>
+
+                <Field>
+                  <FieldLabel htmlFor="password_confirmation">
+                    Confirm Password
+                  </FieldLabel>
+                  <div className="relative">
+                    <Input
+                      id="password_confirmation"
+                      name="password_confirmation"
+                      type={confirmShowPassword ? "text" : "password"}
+                      required
+                      className="focus-visible:border-green-700 focus-visible:ring-white pr-10"
+                    />
+                    <button
+                      onClick={() =>
+                        setConfirmShowPassword(!confirmShowPassword)
+                      }
+                      type="button"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 cursor-pointer"
+                    >
+                      {confirmShowPassword ? <EyeOff /> : <Eye />}
+                    </button>
+                  </div>
+                </Field>
               </Field>
-              <Field>
-                <Button type="submit" className="bg-green-700 cursor-pointer">Create Account</Button>
-                <FieldDescription className="text-center">
-                  Already have an account? <Link href="/login" className="no-underline hover:underline">Log In</Link>
-                </FieldDescription>
-              </Field>
+
+              <FieldDescription>
+                Must be at least 8 characters long.
+              </FieldDescription>
+
+              <Button
+                type="submit"
+                className="bg-green-700 cursor-pointer"
+                disabled={mutation.isPending}
+              >
+                {mutation.isPending ? "Creating..." : "Create Account"}
+              </Button>
+
+              <FieldDescription className="text-center">
+                Already have an account?{" "}
+                <Link href="/login" className="hover:underline">
+                  Log In
+                </Link>
+              </FieldDescription>
             </FieldGroup>
           </form>
         </CardContent>
       </Card>
-      <FieldDescription className="px-6 text-center no-underline">
-        By clicking continue, you agree to our <Link href="#" className="no-underline">Terms of Service</Link>{" "}
-        and <Link href="#" className="no-underline">Privacy Policy</Link>.
+
+      <FieldDescription className="px-6 text-center">
+        By clicking continue, you agree to our{" "}
+        <Link href="#">Terms of Service</Link> and{" "}
+        <Link href="#">Privacy Policy</Link>.
       </FieldDescription>
     </div>
   );

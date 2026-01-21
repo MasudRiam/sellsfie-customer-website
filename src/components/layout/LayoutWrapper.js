@@ -5,6 +5,7 @@ import Navbar from "@/HomePage/Navbar";
 import Footer from "@/HomePage/Footer";
 import CartRootProvider from "@/components/providers/CartProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "sonner";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ export default function LayoutWrapper({ children }) {
           {!hideNavbarFooter && <Footer />}
         </QueryClientProvider>
       </CartRootProvider>
+      <Toaster position="top-right" richColors />
     </>
   );
 }
