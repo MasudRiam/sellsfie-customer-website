@@ -32,11 +32,15 @@ export function SignupForm({ className, ...props }) {
 
   const mutation = useMutation({
     mutationFn: async (fromData) => {
-      const res = await axiosInstance.post("api/client/signup", fromData);
-      return res.data;
+      const signupRes = await axiosInstance.post("api/client/signup", fromData);
+      await axiosInstance.post("api/client/send-otp", {
+        phone: fromData.phone,
+        email: ""
+      });
+      return signupRes.data;
     },
     onSuccess: () => {
-      toast.success("Email sent for verification | Please verify your email");
+      toast.success("Account created | OTP sent to your phone");
       router.push("/auth/verification");
     },
     onError: (error) => {
@@ -82,10 +86,10 @@ export function SignupForm({ className, ...props }) {
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="email">Email/Phone</FieldLabel>
+                <FieldLabel htmlFor="phone">Phone</FieldLabel>
                 <Input
-                  id="email"
-                  name="email"
+                  id="phone"
+                  name="phone"
                   required
                   className="focus-visible:border-green-700 focus-visible:ring-white"
                 />
