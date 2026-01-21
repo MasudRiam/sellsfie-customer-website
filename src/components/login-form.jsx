@@ -26,6 +26,7 @@ import axiosInstance from "@/utility/axios";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
+import { setToken } from "@/utility/helper";
 
 export function LoginForm({ className, ...props }) {
   const router = useRouter();
@@ -37,7 +38,10 @@ export function LoginForm({ className, ...props }) {
       const res = await axiosInstance.post("api/client/login", formData);
       return res.data;
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if(data?.token) {
+        setToken(data.token);
+      }
       toast.success("Login successful");
       router.push("/");
     },

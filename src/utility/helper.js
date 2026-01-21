@@ -1,9 +1,19 @@
-export const getToken = () => {
-    const data = localStorage.getItem("jwt");
-    const token = JSON.parse(data);
+import Cookies from "js-cookie";
 
-    if (!token) {
-        return "";
-    }
-    return token;
+export const getToken = () => {
+  const token = Cookies.get("jwt");
+  return token || "";
 };
+
+export const setToken = (token) => {
+  Cookies.set("jwt", token, {
+    expires: 7,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "none",
+    secure: true,
+  });
+};
+
+export const removeToken = () => {
+    Cookies.remove("jwt");
+}

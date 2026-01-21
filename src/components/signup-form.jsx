@@ -39,8 +39,9 @@ export function SignupForm({ className, ...props }) {
       });
       return signupRes.data;
     },
-    onSuccess: () => {
+    onSuccess: (data, variables) => {
       toast.success("Account created | OTP sent to your phone");
+      sessionStorage.setItem("verification_phone", variables.phone);
       router.push("/auth/verification");
     },
     onError: (error) => {
