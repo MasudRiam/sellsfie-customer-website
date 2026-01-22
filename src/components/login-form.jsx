@@ -38,16 +38,16 @@ export function LoginForm({ className, ...props }) {
       const res = await axiosInstance.post("api/client/login", formData);
       return res.data;
     },
-    onSuccess: (data) => {
-      if(data?.token) {
-        setToken(data.token);
+    onSuccess: (response) => {
+      if (response.token) {
+        setToken(response.token);
       }
       toast.success("Login successful");
-      router.push("/");
+      router.push(`/client/${response.data.id}`);
     },
     onError: (error) => {
       toast.error(error?.response?.data?.message || "Login failed");
-    }
+    },
   });
 
   const handleSubmit = (e) => {
@@ -55,7 +55,7 @@ export function LoginForm({ className, ...props }) {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     mutation.mutate(data);
-  }
+  };
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -146,7 +146,11 @@ export function LoginForm({ className, ...props }) {
                 </div>
               </Field>
               <Field>
-                <Button type="submit" className="bg-green-700 cursor-pointer" disabled={mutation.isLoading}>
+                <Button
+                  type="submit"
+                  className="bg-green-700 cursor-pointer"
+                  disabled={mutation.isLoading}
+                >
                   {mutation.isLoading ? "Logging in..." : "Login"}
                 </Button>
                 <FieldDescription className="text-center">

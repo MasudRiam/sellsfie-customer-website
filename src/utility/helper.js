@@ -9,11 +9,11 @@ export const setToken = (token) => {
   Cookies.set("jwt", token, {
     expires: 7,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "none",
-    secure: true,
+    sameSite: "lax",
+    path: "/",
   });
 };
 
 export const removeToken = () => {
-    Cookies.remove("jwt");
+    Cookies.remove("jwt", { path: "/" });
 }

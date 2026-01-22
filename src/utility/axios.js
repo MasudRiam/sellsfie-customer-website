@@ -6,6 +6,7 @@ const defaultOptions = {
   headers: {
     Accept: "application/json",
   },
+  withCredentials: true,
 };
 
 console.log("NODE_ENV", process.env.NODE_ENV);

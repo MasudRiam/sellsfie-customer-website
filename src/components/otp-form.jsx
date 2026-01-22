@@ -24,6 +24,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axiosInstance from "@/utility/axios";
 import { toast } from "sonner";
+import { email } from "zod";
 
 export function OTPForm({ ...props }) {
   const router = useRouter();
@@ -59,6 +60,8 @@ export function OTPForm({ ...props }) {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     mutation.mutate({
+      email: "",
+      phone: phone,
       otp: data.otp,
     });
   };
