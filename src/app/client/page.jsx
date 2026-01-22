@@ -5,6 +5,7 @@ export default async function ClientRedirectPage() {
   const cookieStore = await cookies();
   const token = cookieStore.get("jwt")?.value;
 
+  //if no token, redirect to login
   if (!token) {
     redirect("/login");
   }
