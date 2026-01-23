@@ -32,6 +32,14 @@ export default async function Page({ params }) {
   if (String(data.id) !== id) {
     redirect(`/client/${data.id}`);
   }
+  console.log ("Client Data:", data);
 
-  return <div>Client ID: {data.name}</div>;
+  return (
+  <div>
+    <h1>Client ID: {data.name}</h1>
+    <h1>Client ID: {data.address}</h1>
+  </div>
+  
+
+  );
 }
