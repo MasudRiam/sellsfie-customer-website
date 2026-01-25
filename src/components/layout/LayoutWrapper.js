@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Navbar from "@/HomePage/Navbar";
+import NavarServer from "@/HomePage/Navbar-Server";
 import Footer from "@/HomePage/Footer";
 import CartRootProvider from "@/components/providers/CartProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

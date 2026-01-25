@@ -13,48 +13,35 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CiLogin } from "react-icons/ci";
 
-const Navbar = () => {
+export default function Navbar({  categoriesData = [] }) {
   const [open, setOpen] = useState(false);
   const { setOpen: setCartOpen, open: cartOpen } = useCart();
-
+  
   const [showCategory, setShowCategory] = useState(true);
   const lastScrollY = useRef(0);
-
+  
   const [scrolled, setScrolled] = useState(false);
-
+  
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-
+      
       setScrolled(y > 10);
       setShowCategory(y < lastScrollY.current || y < 100);
-
+      
       lastScrollY.current = y;
     };
-
+    
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const categories = [
-    "OFFER ZONE",
-    "Best Seller",
-    "Oil",
-    "Ghee (ঘি)",
-    "Dates (খেজুর)",
-    "খেজুর গুড়",
-    "Honey",
-    "Masala",
-    "Nuts & Seeds",
-    "Tea/Coffee",
-    "Honeycomb",
-    "Organic Zone",
-    "Pickle",
-  ];
+  
+  const categories = categoriesData.data || [];
+  console.log("Categories fetched in Navbar:", categories);
 
   const productHref = (category) => ({
     pathname: "/products",
-    query: { category },
+    query: { category: category.slug },
   });
   return (
     <>
@@ -124,10 +111,10 @@ const Navbar = () => {
                   <IoMdClose size={19} />
                 </button>
 
-                <ul className="space-y-4 space-x-0 text-sm">
+                <ul className="space-y-4 text-sm max-h-[calc(100vh-100px)] overflow-y-auto">
                   {categories.map((item, index) => (
                     <ul
-                      key={index}
+                      key={item.id}
                       className="cursor-pointer hover:underline"
                       onClick={() => setOpen(false)}
                     >
@@ -136,7 +123,7 @@ const Navbar = () => {
                         onClick={() => setOpen(false)}
                         className="block no-underline text-black visited:text-fren hover:text-robinhood"
                       >
-                        {item}
+                        {item.name}
                       </Link>
                     </ul>
                   ))}
@@ -205,21 +192,21 @@ const Navbar = () => {
           </div>
         </div>
       </header>
-      <div className="hidden md:block h-20 xl:h-13 relative overflow-hidden">
+      <div className="hidden md:block relative">
         <nav
           className={`absolute inset-x-0 top-0
           transition-transform duration-300 ease-in-out
           ${showCategory ? "translate-y-0" : "-translate-y-full"}
         `}
         >
-          <div className="flex flex-wrap justify-center gap-6 px-6 py-2 text-sm bg-gray-50">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-1  px-6 py-2 text-sm bg-gray-50">
             {categories.map((item, index) => (
-              <div key={index} className="cursor-pointer hover:underline">
+              <div key={item.id} className="cursor-pointer hover:underline">
                 <Link
                   href={productHref(item)}
                   className="no-underline text-black visited:text-fren hover:text-robinhood text-base"
                 >
-                  {item}
+                  {item.name}
                 </Link>
               </div>
             ))}
@@ -229,5 +216,3 @@ const Navbar = () => {
     </>
   );
 };
-
-export default Navbar;

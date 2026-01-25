@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import bodymainImage from "@/assets/img/coconut.jpg";
@@ -12,7 +10,7 @@ import { ShopCarousel } from "./ShopCarousel";
 import Link from "next/link";
 import CartButton from "@/components/cart/CartButton";
 
-const BodyHomePage = () => {
+export default async function BodyHomePage() {
   const collections = [
     { title: "Organic Oil", img: cosmeticsProduct },
     { title: "HONEY (মধু)", img: plasticbottol },
@@ -225,5 +223,3 @@ const BodyHomePage = () => {
     </>
   );
 };
-
-export default BodyHomePage;
