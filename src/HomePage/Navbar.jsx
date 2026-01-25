@@ -37,7 +37,7 @@ export default function Navbar({  categoriesData = [] }) {
   }, []);
   
   const categories = categoriesData.data || [];
-  console.log("Categories fetched in Navbar:", categories);
+  // console.log("Categories fetched in Navbar:", categories);
 
   const productHref = (category) => ({
     pathname: "/products",

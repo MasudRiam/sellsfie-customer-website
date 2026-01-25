@@ -9,6 +9,11 @@ export const shopApi = {
         serverFetch(`api/client/${SHOP_URL}/product/category`, {
             next: { revalidate: 3600}, // Revalidate every hour
         }),
+    
+    getAllProducts: () => 
+        serverFetch(`api/client/${SHOP_URL}/product/all`, {
+            next: { revalidate: 3600}, // Revalidate every hour
+        }),
 }
 
 

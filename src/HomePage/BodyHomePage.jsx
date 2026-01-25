@@ -9,15 +9,35 @@ import sllsfieShortLogo from "@/assets/logo/sellsfiemini.png";
 import { ShopCarousel } from "./ShopCarousel";
 import Link from "next/link";
 import CartButton from "@/components/cart/CartButton";
-
+import { shopApi } from "@/utility/shopApi";
+//in shopApi.js  i fetch all products and now i will use that api to fetch products data and show in this page
 export default async function BodyHomePage() {
+  
+  const productsData = await shopApi.getAllProducts();
+
+  console.log("Fetched products data in BodyHomePage:", productsData);
+
   const collections = [
-    { title: "Organic Oil", img: cosmeticsProduct },
-    { title: "HONEY (মধু)", img: plasticbottol },
-    { title: "Ghee (ঘি)", img: pizzaproduct },
-    { title: "Dates (খেজুর)", img: cosmeticsProduct },
-    { title: "Tea/Snacks (চা-নাস্তা)", img: flowerpot },
-    { title: "Tea/Snacks (চা-নাস্তা)", img: flowerpot },
+    {
+      title: "Cosmetics",
+      img: cosmeticsProduct,
+    },
+    {
+      title: "Grocery",
+      img: pizzaproduct,
+    },
+    {
+      title: "Beverages",
+      img: plasticbottol,
+    },
+    {
+      title: "Home Decor",
+      img: flowerpot,
+    },
+    {
+      title: "Snacks",
+      img: cosmeticsProduct,
+    },
   ];
   return (
     <>
@@ -34,7 +54,11 @@ export default async function BodyHomePage() {
 
         <section className="mx-auto w-full max-w-[1280px] px-4 py-4 sm:px-3 sm:py-8">
           <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-5 gap-5 items-stretch">
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
+          {/* Using fetched products data to render product items and set loading*/}
+          {productsData && productsData.length > 0 ? (
+            console.log("Rendering products:", productsData),
+            productsData?.data?.map((product) => (
+              <div key={product.id} className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
               <Link href="/product" className="no-underline">
                 <Image
                   src={cosmeticsProduct}
@@ -52,7 +76,11 @@ export default async function BodyHomePage() {
               </Link>
               <CartButton product={{ id: 1, name: "Cusmetics products", price: 1550.00, img: cosmeticsProduct }} />
             </div>
-
+            ))
+          ) : (
+            <p>No products available.</p>
+          )}
+{/* 
             <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
               <Link href="/product" className="no-underline">
                 <Image
@@ -171,7 +199,7 @@ export default async function BodyHomePage() {
                 </div>
               </Link>
               <CartButton product={{ id: 7, name: "Flower Pot", price: 190.00, img: flowerpot }} />
-            </div>
+            </div> */}
           </div>
         </section>
 
