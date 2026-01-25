@@ -26,7 +26,7 @@ const page = () => {
           </aside>
 
           <main>
-            <div className="mb-3 ml-3 lg:hidden">
+            <div className="ml-3 md:mt-6 lg:hidden">
               <Sheet>
                 <SheetTrigger asChild>
                   <button

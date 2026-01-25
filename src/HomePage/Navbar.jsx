@@ -192,14 +192,14 @@ export default function Navbar({  categoriesData = [] }) {
           </div>
         </div>
       </header>
-      <div className="hidden md:block relative">
+      <div className="hidden md:block relative h-12">
         <nav
           className={`absolute inset-x-0 top-0
           transition-transform duration-300 ease-in-out
           ${showCategory ? "translate-y-0" : "-translate-y-full"}
         `}
         >
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-1  px-6 py-2 text-sm bg-gray-50">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 px-6 py-2 text-sm bg-gray-50">
             {categories.map((item, index) => (
               <div key={item.id} className="cursor-pointer hover:underline">
                 <Link
