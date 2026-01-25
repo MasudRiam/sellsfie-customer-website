@@ -15,8 +15,7 @@ export default async function BodyHomePage() {
   
   const productsData = await shopApi.getAllProducts();
 
-  console.log("Fetched products data in BodyHomePage:", productsData);
-
+  
   const collections = [
     {
       title: "Cosmetics",
@@ -39,6 +38,10 @@ export default async function BodyHomePage() {
       img: cosmeticsProduct,
     },
   ];
+  
+  const products = productsData?.data || [];
+    console.log("Fetched products data in BodyHomePage:", products);
+
   return (
     <>
       {/* banner image */}
@@ -53,28 +56,29 @@ export default async function BodyHomePage() {
         </h1>
 
         <section className="mx-auto w-full max-w-[1280px] px-4 py-4 sm:px-3 sm:py-8">
-          <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-5 gap-5 items-stretch">
+          <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-5 gap-8 items-stretch">
           {/* Using fetched products data to render product items and set loading*/}
-          {productsData && productsData.length > 0 ? (
-            console.log("Rendering products:", productsData),
-            productsData?.data?.map((product) => (
-              <div key={product.id} className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
+           {products.length > 0 ? (
+              products.map((product) => (
+              <div key={product.id} className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full flex flex-col">
               <Link href="/product" className="no-underline">
-                <Image
-                  src={cosmeticsProduct}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
+              <div className="h-40">
+                <img
+                className="w-full h-full object-contain"
+                  src={product.thumbnail_image.url}
+                  alt={product.name}
                 />
+                </div>
                 <div className="mt-auto pt-4">
                   <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Cusmetics products
+                    {product.name}
                   </p>
                   <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 1,550.00
+                    Tk {product.purchase_price}
                   </p>
                 </div>
               </Link>
-              <CartButton product={{ id: 1, name: "Cusmetics products", price: 1550.00, img: cosmeticsProduct }} />
+              <CartButton product={{ id: product.id, name: product.name, price: product.price, img: product.img }} />
             </div>
             ))
           ) : (
