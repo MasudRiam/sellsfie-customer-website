@@ -14,7 +14,7 @@ export default function LayoutWrapper({ children }) {
 
   const validRoutes = ["/", "/about", "/products", "/product", "/contact", "/cart", "/customer-care", "/return-policy", "/refund-policy"];
 
-  const authRoutes = ["/login", "/register", "/signup", "/checkout", "/profile"];
+  const authRoutes = ["/login", "/register", "/signup", "/checkout", "/profile", "/order"];
 
   const isValidRoute = validRoutes.some(
     (route) => pathname === route || pathname.startsWith(route + "/")

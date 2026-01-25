@@ -30,36 +30,9 @@ const Page = () => {
 
   return (
     <>
-      <header className="w-full border-b border-gray-200">
-        <div className="relative">
-          <div className="relative z-10">
-            <div className="flex items-center justify-between px-4 py-3 md:hidden">
-              <div className="flex justify-center items-center gap-2 cursor-pointer">
-                <Link
-                  href="/"
-                  className="text-lg font-semibold text-fren max-[430px]:ml-4"
-                >
-                  <img src={sellsfieLogo.src} alt="Logo" className="h-8" />
-                </Link>
-              </div>
+      <header className="w-full border-b max-w-7xl mx-auto p-4 border-gray-200 ">
 
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <FiShoppingBag
-                    onClick={() => setCartOpen(true)}
-                    className="text-xl text-fren"
-                  />
-                  {/* <span className="absolute -top-2 -right-2 bg-fren text-white text-xs rounded-full px-1">
-                  9
-                </span> */}
-                </div>
-                <Link href="/login">
-                  <FiUser className="text-xl text-fren cursor-pointer" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="hidden md:flex items-center justify-between px-12 py-4">
+            <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Link
                   href="/"
@@ -70,19 +43,18 @@ const Page = () => {
               </div>
 
               <div className="flex items-center gap-6">
-                <div className="relative">
+                {/* <div className="relative">
                   <FiShoppingBag
                     onClick={() => setCartOpen(true)}
                     className="text-xl text-fren cursor-pointer"
                   />
-                </div>
+                </div> */}
                 <Link href="/login">
                   <FiUser className="text-xl text-fren cursor-pointer" />
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
+         
       </header>
 
       <div className="min-h-screen mt-5 bg-white">
