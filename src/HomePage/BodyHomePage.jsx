@@ -10,9 +10,9 @@ import { ShopCarousel } from "./ShopCarousel";
 import Link from "next/link";
 import CartButton from "@/components/cart/CartButton";
 import { shopApi } from "@/utility/shopApi";
+import ShopCarouselServer from "./ShopCarousel-server";
 //in shopApi.js  i fetch all products and now i will use that api to fetch products data and show in this page
 export default async function BodyHomePage() {
-  
   const productsData = await shopApi.getAllProducts();
 
   
@@ -40,7 +40,6 @@ export default async function BodyHomePage() {
   ];
   
   const products = productsData?.data || [];
-    console.log("Fetched products data in BodyHomePage:", products);
 
   return (
     <>
@@ -52,7 +51,7 @@ export default async function BodyHomePage() {
       {/* body section  */}
       <div className="mx-auto py-10">
         <h1 className="text-center text-3xl tracking-wide font-normal mb-7 uppercase">
-          All Product
+          All Products
         </h1>
 
         <section className="mx-auto w-full max-w-[1280px] px-4 py-4 sm:px-3 sm:py-8">
@@ -215,7 +214,7 @@ export default async function BodyHomePage() {
                 HOT PRODUCT
               </h2>
             </div>
-            <ShopCarousel />
+            <ShopCarouselServer />
           </div>
         </section>
 
