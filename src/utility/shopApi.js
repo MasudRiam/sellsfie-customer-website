@@ -12,7 +12,7 @@ export const shopApi = {
     
     getAllProducts: () => 
         serverFetch(`api/client/${SHOP_URL}/product/all`, {
-            next: { revalidate: 3600}, // Revalidate every hour
+             cache: 'no-store' // Always fetch fresh data
         }),
     
     getHotProducts: () => 
