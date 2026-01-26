@@ -39,7 +39,7 @@ export default async function BodyHomePage() {
     },
   ];
   
-  const products = productsData?.data || [];
+  const products = productsData?.data?.data || [];
     console.log("Fetched products data in BodyHomePage:", products);
 
   return (
@@ -55,7 +55,7 @@ export default async function BodyHomePage() {
           All Product
         </h1>
 
-        <section className="mx-auto w-full max-w-[1280px] px-4 py-4 sm:px-3 sm:py-8">
+        <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-3 sm:py-8">
           <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-5 gap-8 items-stretch">
           {/* Using fetched products data to render product items and set loading*/}
            {products.length > 0 ? (
@@ -70,145 +70,36 @@ export default async function BodyHomePage() {
                 />
                 </div>
                 <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
+                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal wrap-break-word overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
                     {product.name}
                   </p>
                   <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk {product.purchase_price}
+                    { product.price?.has_discount ? (
+                      <>
+                        <span className="mr-2 text-sm text-gray-400 line-through">
+                          Tk {product?.price?.original}
+                        </span>
+                        <span>
+                          Tk {product?.price?.final}
+                        </span>
+                      </>
+                    ) : (
+                      <span>Tk {product?.price?.final}</span>
+                    )}
                   </p>
                 </div>
               </Link>
-              <CartButton product={{ id: product.id, name: product.name, price: product.price, img: product.img }} />
+              <CartButton product={{ id: product.id, name: product.name, price: product?.price?.final, img: product.img }} />
             </div>
             ))
           ) : (
             <p>No products available.</p>
           )}
-{/* 
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={pizzaproduct}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Gawa Ghee / ঘি
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 1,800.00
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 2, name: "Gawa Ghee / ঘি", price: 1800.00, img: pizzaproduct }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col relative">
-              <Link href="/product" className="no-underline">
-                <span className="absolute top-3 left-3 rounded-full bg-green-100 px-3 py-1 text-xs text-green-700">
-                  ON SALE
-                </span>
-                <Image
-                  src={cosmeticsProduct}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Natural Honeycomb 1kg
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 2,250.00{" "}
-                    <span className="ml-2 text-sm text-gray-400 line-through">
-                      Tk 2,500.00
-                    </span>
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 3, name: "Natural Honeycomb 1kg", price: 2250.00, img: cosmeticsProduct }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={pizzaproduct}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Honey Nuts
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 1,500.00
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 4, name: "Honey Nuts", price: 1500.00, img: pizzaproduct }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={plasticbottol}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Honey Nuts
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 1,500.00
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 5, name: "Honey Nuts", price: 1500.00, img: plasticbottol }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={cosmeticsProduct}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Honey Nuts
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 1,500.00
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 6, name: "Honey Nuts", price: 1500.00, img: cosmeticsProduct }} />
-            </div>
-
-            <div className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] flex flex-col">
-              <Link href="/product" className="no-underline">
-                <Image
-                  src={flowerpot}
-                  alt="Product"
-                  className="mx-auto h-37 sm:h-42 lg:h-55 object-contain"
-                />
-                <div className="mt-auto pt-4">
-                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal break-words overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                    Flower Pot
-                  </p>
-                  <p className="mt-4 font-semibold text-black hover:text-green-700">
-                    Tk 190.00
-                  </p>
-                </div>
-              </Link>
-              <CartButton product={{ id: 7, name: "Flower Pot", price: 190.00, img: flowerpot }} />
-            </div> */}
           </div>
         </section>
 
         {/* carousel Section */}
-        <section className="bg-[#f7f7f7] p-14">
+        <section className="bg-gray-100 p-14">
           <div className="max-w-6xl mx-auto">
             <div>
               <h2 className="text-center text-3xl tracking-tight font-semibold mb-10 uppercase">
@@ -220,12 +111,12 @@ export default async function BodyHomePage() {
         </section>
 
         {/* collection section  */}
-        <section className="mx-auto max-w-[1280px]  pt-6 pb-16">
+        <section className="mx-auto max-w-7xl  pt-6 pb-16">
           <h2 className="text-center text-3xl tracking-wide font-normal mb-10 uppercase">
             Collection
           </h2>
 
-          <div className="mx-auto max-w-[900px] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-7 gap-x-2 justify-items-center">
+          <div className="mx-auto max-w-225 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-7 gap-x-2 justify-items-center">
             {collections.map((item, idx) => (
               <div key={idx} className="text-center">
                 <Link href="/product" className="no-underline">
@@ -243,7 +134,7 @@ export default async function BodyHomePage() {
                     />
                   </div>
 
-                  <p className="mt-4 text-base text-gray-700 whitespace-normal break-words">
+                  <p className="mt-4 text-base text-gray-700 whitespace-normal wrap-break-word">
                     {item.title}
                   </p>
                 </Link>
