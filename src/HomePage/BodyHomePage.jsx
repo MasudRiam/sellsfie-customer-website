@@ -39,7 +39,8 @@ export default async function BodyHomePage() {
     },
   ];
   
-  const products = productsData?.data || [];
+  const products = productsData?.data?.data || [];
+  console.log("Fetched products data:", products);
 
   return (
     <>
