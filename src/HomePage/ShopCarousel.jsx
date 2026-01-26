@@ -16,19 +16,22 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 
-const shops = [
-  { id: 1, image: cosmeticsProduct, name: "Shop One" },
-  { id: 2, image: pizzaproduct, name: "Shop Two" },
-  { id: 3, image: plasticbottol, name: "Shop Three" },
-  { id: 4, image: flowerpot, name: "Shop Four" },
-  { id: 5, image: cosmeticsProduct, name: "Shop Five" },
-  { id: 6, image: pizzaproduct, name: "Shop Six" },
-  { id: 7, image: cosmeticsProduct, name: "Shop Seven" },
-  { id: 8, image: pizzaproduct, name: "Shop Eight" },
-  { id: 9, image: plasticbottol, name: "Shop Nine" },
-  { id: 10, image: flowerpot, name: "Shop Ten" },
-];
-export function ShopCarousel() {
+
+// const shops = [
+//   { id: 1, image: cosmeticsProduct, name: "Shop One" },
+//   { id: 2, image: pizzaproduct, name: "Shop Two" },
+//   { id: 3, image: plasticbottol, name: "Shop Three" },
+//   { id: 4, image: flowerpot, name: "Shop Four" },
+//   { id: 5, image: cosmeticsProduct, name: "Shop Five" },
+//   { id: 6, image: pizzaproduct, name: "Shop Six" },
+//   { id: 7, image: cosmeticsProduct, name: "Shop Seven" },
+//   { id: 8, image: pizzaproduct, name: "Shop Eight" },
+//   { id: 9, image: plasticbottol, name: "Shop Nine" },
+//   { id: 10, image: flowerpot, name: "Shop Ten" },
+// ];
+export function ShopCarousel({ hotProductsData = [] }) {
+  const shops = hotProductsData.data || [];
+
   const autoplay = React.useRef(
     Autoplay({
       delay: 4000,
@@ -54,10 +57,9 @@ export function ShopCarousel() {
             <Link href={`/product`} className="no-underline text-black">
               <div className="p-2">
                 <div className="relative aspect-square rounded-full overflow-hidden group">
-                  <Image
-                    src={shop.image}
+                  <img
+                    src={shop.product_image.url}
                     alt={`shop-${index}`}
-                    fill
                     className="object-cover mx-auto h-37 sm:h-42 lg:h-55 transition-transform duration-300 bg-white group-hover:scale-105"
                   />
                   <div
