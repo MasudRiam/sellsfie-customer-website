@@ -91,7 +91,7 @@ export default async function page({ searchParams }) {
                           {product.name}
                         </p>
                         <p className="mt-4 font-semibold text-black hover:text-green-700">
-                          Tk {product.unit_price}
+                          Tk {product.price?.original}
                         </p>
                       </div>
                     </Link>
