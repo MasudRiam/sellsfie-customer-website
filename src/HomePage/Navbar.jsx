@@ -41,7 +41,7 @@ export default function Navbar({  categoriesData = [] }) {
 
   const productHref = (category) => ({
     pathname: "/products",
-    query: { category: category.slug },
+    query: { category_id: category.id },
   });
   return (
     <>
