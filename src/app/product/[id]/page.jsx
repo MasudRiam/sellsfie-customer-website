@@ -1,16 +1,11 @@
 import React from "react";
-import pizzaImg from "@/assets/img/product/pizza.png";
-import Image from "next/image";
 import ProductTab from "../productTab";
-import plasticBottol from "@/assets/img/product/plastic-bottol.jpg";
-import cosmetics from "@/assets/img/product/cosmetics.png";
 import ImgCarousel from "../imgCarousel";
 import { shopApi } from "@/utility/shopApi";
 import { notFound } from "next/navigation";
 import he from "he";
 import QuantitySelector from "../QuantitySelector";
 
-// const productsImg = [pizzaImg, plasticBottol, cosmetics];
 
 export default async function page({ params }) {
   const { id } = await params;
