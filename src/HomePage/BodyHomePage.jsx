@@ -61,7 +61,7 @@ export default async function BodyHomePage() {
            {products.length > 0 ? (
               products.map((product) => (
               <div key={product.id} className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full flex flex-col">
-              <Link href="/product" className="no-underline">
+              <Link href={`/product/${product.id}`} className="no-underline">
               <div className="h-40">
                 <img
                 className="w-full h-full object-contain"

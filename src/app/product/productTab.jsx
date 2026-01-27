@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const ProductTab = () => {
+export default function ProductTab({ description }) {
   const [activeTab, setActiveTab] = useState("description");
 
   const tabs = [
@@ -34,28 +34,15 @@ const ProductTab = () => {
 
       <div className="mt-6">
         {activeTab === "description" && (
-          <p>
-            Fresh farm vegetables carefully selected and delivered with quality
-            assurance. Sensory Experience Sight: A colorful circle with browned
-            crust, red sauce, white/golden cheese, and vibrant toppings, often
-            with bubbly, charred spots. Smell: Aromatic blend of baked dough,
-            herbs (oregano, basil), savory cheese, and garlic. Touch: The warmth
-            of the slice, the soft dough, gooey cheese, and crisp edges. Taste:
-            A balance of salty, savory, sweet (from tomatoes), and sometimes
-            spicy or tangy flavors. Sound: The slight crunch of the crust, the
-            satisfying "tear" as you pull a slice.
-          </p>
+          <div dangerouslySetInnerHTML={{ __html: description }} />
         )}
 
         {activeTab === "additional" && (
           <p>
-            Product weight, origin, storage instructions, and packaging details
-            are provided here.lore
+            
           </p>
         )}
       </div>
     </div>
   );
 };
-
-export default ProductTab;

@@ -10,7 +10,7 @@ import {
   CarouselNext
 } from "@/components/ui/carousel";
 
-const ImgCarousel = ({ images }) => {
+export default function ImgCarousel({ images }) {
   const [api, setApi] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -36,6 +36,7 @@ const ImgCarousel = ({ images }) => {
                   fill
                   alt="Product Image"
                   className="object-contain bg-gray-100"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority={index === 0}
                 />
               </div>
@@ -51,7 +52,7 @@ const ImgCarousel = ({ images }) => {
           <button
             key={index}
             onClick={() => api.scrollTo(index)}
-            className={`relative w-20 h-20 border transition
+            className={`relative w-20 h-20 border transition overflow-hidden
               ${
                 activeIndex === index
                   ? "border-green-600 ring-2 ring-green-500/40"
@@ -63,6 +64,7 @@ const ImgCarousel = ({ images }) => {
               src={img}
               alt="Thumbnail"
               fill
+              sizes="80px"
               className="object-contain bg-gray-100 p-2"
             />
           </button>
@@ -71,5 +73,3 @@ const ImgCarousel = ({ images }) => {
     </>
   );
 };
-
-export default ImgCarousel;
