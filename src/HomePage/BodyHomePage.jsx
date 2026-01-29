@@ -89,7 +89,7 @@ export default async function BodyHomePage() {
                   </p>
                 </div>
               </Link>
-              <CartButton product={{ id: product.id, name: product.name, price: product?.price?.final, img: product.img }} />
+              <CartButton product={{ id: product.id, name: product.name, price: product?.price?.final, img: product.thumbnail_image.url }} />
             </div>
             ))
           ) : (

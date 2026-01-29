@@ -8,12 +8,12 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
-import { useCart } from "@/context/cart-context";
 import Image from "next/image";
 import Link from "next/link";
+import { useCartStore } from "@/store/cart-store";
 
-const CartSheet = () => {
-  const { open, setOpen, items, updateQty, removeItem } = useCart();
+export default function CartSheet() {
+  const { open, setOpen, items, updateQty, removeItem } = useCartStore();
 
   const subtotal = items.reduce((t, i) => t + i.price * i.qty, 0);
   return (
@@ -33,7 +33,7 @@ const CartSheet = () => {
               <div className="w-16 h-16 border flex items-center justify-center">
                 <Image
                   src={item.img}
-                  alt=""
+                  alt={item.name}
                   className="object-contain"
                   width={64}
                   height={64}
@@ -87,7 +87,10 @@ const CartSheet = () => {
           </div>
 
           <Link href="/checkout" className="">
-            <Button onClick={() => setOpen(false)} className="w-full mb-1 bg-green-700 text-white cursor-pointer">
+            <Button
+              onClick={() => setOpen(false)}
+              className="w-full mb-1 bg-green-700 text-white cursor-pointer"
+            >
               💳 Pay Online
             </Button>
           </Link>
@@ -107,4 +110,3 @@ const CartSheet = () => {
   );
 };
 
-export default CartSheet;

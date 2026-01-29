@@ -1,18 +1,17 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import CartRootProvider from "@/components/providers/CartProvider";
 import { Toaster } from "sonner";
+import CartSheet from "../cart/CartSheet";
 
 const queryClient = new QueryClient();
 
 export default function ClientProviders({ children }) {
   return (
-    <CartRootProvider>
-      <QueryClientProvider client={queryClient}>
-        {children}
-      </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      {children}
+      <CartSheet />
       <Toaster position="top-right" richColors />
-    </CartRootProvider>
+    </QueryClientProvider>
   );
 }

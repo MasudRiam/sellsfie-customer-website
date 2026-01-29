@@ -6,16 +6,16 @@ import { GoSearch } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
 import Link from "next/link";
-import { useCart } from "@/context/cart-context";
 import SearchSheet from "@/context/search-sheet";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CiLogin } from "react-icons/ci";
+import { useCartStore } from "@/store/cart-store";
 
 export default function Navbar({  categoriesData = [] }) {
   const [open, setOpen] = useState(false);
-  const { setOpen: setCartOpen, open: cartOpen } = useCart();
+  const { setOpen: setCartOpen, open: cartOpen } = useCartStore();
   
   const [showCategory, setShowCategory] = useState(true);
   const lastScrollY = useRef(0);
