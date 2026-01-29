@@ -22,7 +22,7 @@ export default async function page({ searchParams }) {
   // console.log("Category ID from params:", category_id);
   const allProducts = await shopApi.getAllProducts(category_id);
   const categoryProducts = allProducts?.data?.data || [];
-  console.log("Category Products:", categoryProducts);
+  // console.log("Category Products:", categoryProducts);
   return (
     <>
       <section className="mx-auto w-full max-w-[1280px] px-1 py-4 sm:px-3 sm:py-8">
