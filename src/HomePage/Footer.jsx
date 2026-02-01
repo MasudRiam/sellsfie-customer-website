@@ -1,8 +1,11 @@
 import React from "react";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
 import Link from "next/link";
+import Image from "next/image";
 
-const Footer = () => {
+export default function Footer() {
+  
+
   return (
     <div>
       <footer>
@@ -10,7 +13,14 @@ const Footer = () => {
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
             <div>
               <div className="flex items-center gap-3">
-                <img src={sellsfieLogo.src} alt="Logo" className="h-10" />
+                  <Image
+                    src={sellsfieLogo}
+                    alt="Logo"
+                    className="h-10"
+                    width={40}
+                    height={40}
+                  />
+
               </div>
 
               <h3 className="mt-4 text-lg font-semibold text-gray-900">
@@ -118,6 +128,4 @@ const Footer = () => {
       </footer>
     </div>
   );
-};
-
-export default Footer;
+}

@@ -12,30 +12,33 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CiLogin } from "react-icons/ci";
 import { useCartStore } from "@/store/cart-store";
+import Image from "next/image";
 
-export default function Navbar({  categoriesData = [] }) {
+export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
   const [open, setOpen] = useState(false);
   const { setOpen: setCartOpen, open: cartOpen } = useCartStore();
-  
+
+  const aboutShop = aboutShopData.data || {};
+
   const [showCategory, setShowCategory] = useState(true);
   const lastScrollY = useRef(0);
-  
+
   const [scrolled, setScrolled] = useState(false);
-  
+
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      
+
       setScrolled(y > 10);
       setShowCategory(y < lastScrollY.current || y < 100);
-      
+
       lastScrollY.current = y;
     };
-    
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  
+
   const categories = categoriesData.data || [];
   // console.log("Categories fetched in Navbar:", categories);
 
@@ -66,7 +69,13 @@ export default function Navbar({  categoriesData = [] }) {
                   href="/"
                   className="text-lg font-semibold text-fren max-[430px]:ml-4"
                 >
-                  <img src={sellsfieLogo.src} alt="Logo" className="h-8" />
+                  <Image
+                    src={aboutShop?.logo}
+                    alt="Logo"
+                    className="h-8"
+                    width={43}
+                    height={32}
+                  />
                 </Link>
               </div>
 
@@ -150,7 +159,7 @@ export default function Navbar({  categoriesData = [] }) {
                       // onClick={handleSearch}
                       className="bg-green-700 hover:bg-[#2e2e2e] text-white px-4 cursor-pointer rounded-md flex items-center justify-center"
                     >
-                      <Search size={18}/>
+                      <Search size={18} />
                     </button>
                   </div>
                 </div>
@@ -160,7 +169,14 @@ export default function Navbar({  categoriesData = [] }) {
                   href="/"
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  <img src={sellsfieLogo.src} alt="Logo" className="h-10" />
+                  <Image
+                    src={aboutShop?.logo}
+                    alt="Logo"
+                    className="h-10"
+                    width={43}
+                    height={32}
+                    title={aboutShop.name}
+                  />
                 </Link>
               </div>
 
@@ -215,4 +231,4 @@ export default function Navbar({  categoriesData = [] }) {
       </div>
     </>
   );
-};
+}
