@@ -101,11 +101,9 @@ export default async function BodyHomePage() {
         {/* carousel Section */}
         <section className="bg-gray-100 p-14">
           <div className="max-w-6xl mx-auto">
-            <div>
               <h2 className="text-center text-3xl tracking-tight font-semibold mb-10 uppercase">
                 HOT PRODUCT
               </h2>
-            </div>
             <ShopCarouselServer />
           </div>
         </section>
