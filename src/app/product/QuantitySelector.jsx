@@ -2,16 +2,22 @@
 
 import React, { useState } from "react";
 
-export default function QuantitySelector({ maxQuantity }) {
-  const [quantity, setQuantity] = useState(1);
+export default function QuantitySelector({ maxQuantity, value, onChange }) {
+  const [internalQty, setInternalQty] = useState(1);
+  const quantity = value ?? internalQty;
 
   const handleDecrease = () => {
-    setQuantity((prev) => Math.max(1, prev - 1));
+    const next = Math.max(1, quantity - 1);
+    if (onChange) onChange(next);
+    else setInternalQty(next);
   };
 
   const handleIncrease = () => {
-    setQuantity((prev) => Math.min(maxQuantity, prev + 1));
+    const next = Math.min(maxQuantity, quantity + 1);
+    if (onChange) onChange(next);
+    else setInternalQty(next);
   };
+
   return (
     <div className="flex items-center gap-4 mb-6">
       <p className="font-medium">Quantity:</p>
