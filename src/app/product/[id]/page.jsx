@@ -28,7 +28,7 @@ export default async function page({ params }) {
     ? [productMainImg, ...productGalleryImgs]
     : productGalleryImgs;
 
-  console.log("Product Details:", product);
+  // console.log("Product Details:", product);
 
   const escapedDescription = he.decode(product.description || "");
 

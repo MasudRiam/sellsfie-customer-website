@@ -32,6 +32,7 @@ import Link from "next/link";
 export function ShopCarousel({ hotProductsData = [] }) {
   const shops = hotProductsData.data || [];
 
+  console.log("Hot products data in ShopCarousel:", shops);
   const autoplay = React.useRef(
     Autoplay({
       delay: 4000,
@@ -54,7 +55,7 @@ export function ShopCarousel({ hotProductsData = [] }) {
             key={index}
             className="md:basis-1/3 lg:basis-1/5 sm:basis-1/3 basis-1/2 p-2"
           >
-            <Link href={`/product`} className="no-underline text-black">
+            <Link href={`/product/${shop.id}`} className="no-underline text-black">
               <div className="p-2">
                 <div className="relative aspect-square rounded-full overflow-hidden group">
                   <img

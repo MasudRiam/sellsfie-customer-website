@@ -11,7 +11,7 @@ import Link from "next/link";
 import CartButton from "@/components/cart/CartButton";
 import { shopApi } from "@/utility/shopApi";
 import ShopCarouselServer from "./ShopCarousel-server";
-//in shopApi.js  i fetch all products and now i will use that api to fetch products data and show in this page
+
 export default async function BodyHomePage() {
   const productsData = await shopApi.getAllProducts();
 
@@ -40,7 +40,7 @@ export default async function BodyHomePage() {
   ];
   
   const products = productsData?.data?.data || [];
-  console.log("Fetched products data:", products);
+  // console.log("Fetched products data:", products);
 
   return (
     <>
@@ -57,18 +57,19 @@ export default async function BodyHomePage() {
 
         <section className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-3 sm:py-8">
           <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-5 gap-8 items-stretch">
-          {/* Using fetched products data to render product items and set loading*/}
+
            {products.length > 0 ? (
               products.map((product) => (
               <div key={product.id} className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full flex flex-col">
               <Link href={`/product/${product.id}`} className="no-underline">
-              <div className="h-40">
-                <img
-                className="w-full h-full object-contain"
+            <div className="relative h-40">
+                <Image
+                  fill
                   src={product.thumbnail_image.url}
                   alt={product.name}
+                  className="object-contain"
                 />
-                </div>
+              </div>
                 <div className="mt-auto pt-4">
                   <p className="mt-3 sm:mt-4 text-sm whitespace-normal wrap-break-word overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
                     {product.name}
