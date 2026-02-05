@@ -88,13 +88,13 @@ const page = () => {
                 variant="outline"
                 className={
                   order.status === "Delivered"
-                    ? "bg-green-700 text-white border-green-700 hover:bg-green-800"
+                    ? "bg-green-700 text-white "
                     : order.status === "Pending"
-                    ? "bg-amber-400 text-white border-yellow-600 hover:bg-amber-800"
+                    ? "bg-[#ff9f43] text-white"
                     : order.status === "Processing"
-                    ? "bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100"
+                    ? "bg-[#00cfe8] text-white"
                     : order.status === "Cancelled"
-                    ? "bg-red-100 text-red-700 border-red-200 hover:bg-red-100"
+                    ? "bg-[#ea3c3c] text-white"
                     : "bg-gray-100 text-gray-600 border-gray-200 hover:bg-gray-100"
                 }
               >
