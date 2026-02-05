@@ -5,7 +5,6 @@ import { Package, User, MapPin, LogOut } from "lucide-react";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
 import { FiShoppingBag, FiUser } from "react-icons/fi";
 import Link from "next/link";
-import { useCart } from "@/context/cart-context";
 const orders = [
   {
     id: "ORD123456",
@@ -35,7 +34,6 @@ const orders = [
 ];
 
 const page = () => {
-    const { setOpen: setCartOpen, open: cartOpen } = useCart();
   
   return (
     <div className="max-w-7xl mx-auto p-4 min-h-screen">

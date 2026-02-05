@@ -14,14 +14,11 @@ import { ChevronDown } from "lucide-react";
 import { FiShoppingBag, FiUser } from "react-icons/fi";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
 import Link from "next/link";
-import { useCart } from "@/context/cart-context";
 import pizzaImg from "@/assets/img/product/pizza.png";
 import Image from "next/image";
 
 const Page = () => {
   const { control } = useForm();
-  const [open, setOpen] = useState(false);
-  const { setOpen: setCartOpen, open: cartOpen } = useCart();
   const [billing, setBilling] = useState("same");
   const [isOrderSummaryOpen, setIsOrderSummaryOpen] = useState(true);
 
