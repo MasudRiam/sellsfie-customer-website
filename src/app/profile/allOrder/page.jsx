@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { Eye, EyeIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -102,11 +103,15 @@ const page = () => {
               </Badge>
             </td>
 
-            <td className="px-6 py-4">
-              <Link href="/order" className="text-sm font-medium text-green-600 hover:underline">
-                View
-              </Link>
-            </td>
+        <td className="px-6 py-4">
+          <Link
+            href="/order"
+            className="inline-flex items-center justify-center p-2 rounded-md bg-green-700 text-white hover:bg-green-800 transition"
+          >
+            <EyeIcon size={20} />
+          </Link>
+        </td>
+
           </tr>
         ))
       ) : (

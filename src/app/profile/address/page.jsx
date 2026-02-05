@@ -53,7 +53,7 @@ const AddressPage = () => {
         <h2 className="text-xl font-semibold">Address List</h2>
         <button
           onClick={handleAddAddress}
-          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+          className="px-4 py-2 bg-green-700 hover:bg-[#2e2e2e] text-white rounded cursor-pointer"
         >
           + Add Address
         </button>
@@ -160,7 +160,7 @@ const AddressPage = () => {
       {/* Footer Buttons */}
       <div className="flex justify-end gap-4 mt-6">
         <button className="px-6 py-2 border rounded hover:bg-gray-100">Cancel</button>
-        <button className="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        <button className="px-6 py-2 bg-green-700 hover:bg-[#2e2e2e] cursor-pointer text-white rounded">
           Save changes
         </button>
       </div>
