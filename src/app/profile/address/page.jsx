@@ -159,7 +159,6 @@ const AddressPage = () => {
 
       {/* Footer Buttons */}
       <div className="flex justify-end gap-4 mt-6">
-        <button className="px-6 py-2 border rounded hover:bg-gray-100">Cancel</button>
         <button className="px-6 py-2 bg-green-700 hover:bg-[#2e2e2e] cursor-pointer text-white rounded">
           Save changes
         </button>
