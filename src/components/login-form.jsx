@@ -43,7 +43,8 @@ export function LoginForm({ className, ...props }) {
         setToken(response.token);
       }
       toast.success("Login successful");
-      router.push(`/client/${response.data.id}`);
+      // router.push(`/client/${response.data.id}`);
+      router.push(`/profile`);
     },
     onError: (error) => {
       toast.error(error?.response?.data?.message || "Login failed");

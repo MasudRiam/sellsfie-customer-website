@@ -34,6 +34,13 @@ export const shopApi = {
     serverFetch(`api/client/shop/info/${SHOP_URL}`, {
       cache: "force-cache", // Always fetch fresh data
     }),
+  
+  getUserInfo: () =>
+    serverFetch(`api/client/shop/info/${SHOP_URL}`, {
+      cache: "no-store", // Always fetch fresh data
+    }),
+  
 };
+
 
 export { SHOP_URL };

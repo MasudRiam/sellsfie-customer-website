@@ -10,23 +10,23 @@ const page = () => {
          </div>
 
       <div>
-        <h1 className="text-2xl text-center font-bold mt-8">রিফান্ড পলিসি</h1>
+        <h1 className="text-lg font-medium text-center mt-8">রিফান্ড পলিসি</h1>
       </div>
       <div className='max-w-5xl mx-auto p-6'>
          <ul className="list-disc pl-5 flex flex-col gap-3">
-            <li className="text-base font-bold">
+            <li className="text-gray-600 leading-relaxed">
               আপনার রিফান্ড প্রসেসিংয়ের সময় নির্ভর করে রিফান্ডের ধরন এবং আপনি যে পেমেন্ট পদ্ধতি ব্যবহার করেছেন তার উপর।
             </li>
-            <li className="text-base font-bold">
+            <li className="text-gray-600 leading-relaxed">
               ঘরেরবাজার যখন আপনার রিফান্ডের ধরন অনুযায়ী আপনার রিফান্ড প্রক্রিয়া করে তখন থেকে রিফান্ডের সময়/প্রক্রিয়া শুরু হয়।
             </li>
-            <li className="text-base font-bold">
+            <li className="text-gray-600 leading-relaxed">
               সাধারণত, ক্রেডিট কার্ড বা ডেবিট কার্ডের মাধ্যমে করা রিফান্ডগুলি প্রক্রিয়াকরণের জন্য ৫-৭ ব্যবসায়িক দিন সময় নেয়।
             </li>
-            <li className="text-base font-bold">
+            <li className="text-gray-600 leading-relaxed">
               রিটার্ন থেকে রিফান্ড-আপনার আইটেমটি গুদামে ফেরত দেওয়া এবং কিউসি সম্পন্ন হওয়ার পরে রিফান্ড প্রক্রিয়া করা হয়
             </li>
-            <li className="text-base font-bold">
+            <li className="text-gray-600 leading-relaxed">
               কীভাবে কোনও জিনিস ফেরত দিতে হয় তা জানতে, আমাদের রিটার্ন পলিসি পড়ুন।
             </li>
           </ul>

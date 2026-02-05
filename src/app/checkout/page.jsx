@@ -16,6 +16,7 @@ import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
 import Link from "next/link";
 import pizzaImg from "@/assets/img/product/pizza.png";
 import Image from "next/image";
+import SimpleNavbar from "./SimpleNavbar";
 
 const Page = () => {
   const { control } = useForm();
@@ -27,32 +28,7 @@ const Page = () => {
 
   return (
     <>
-      <header className="w-full border-b max-w-7xl mx-auto p-4 border-gray-200 ">
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Link
-                  href="/"
-                  className="flex items-center gap-2 cursor-pointer"
-                >
-                  <img src={sellsfieLogo.src} alt="Logo" className="h-10" />
-                </Link>
-              </div>
-
-              <div className="flex items-center gap-6">
-                {/* <div className="relative">
-                  <FiShoppingBag
-                    onClick={() => setCartOpen(true)}
-                    className="text-xl text-fren cursor-pointer"
-                  />
-                </div> */}
-                <Link href="/login">
-                  <FiUser className="text-xl text-fren cursor-pointer" />
-                </Link>
-              </div>
-            </div>
-         
-      </header>
+    <SimpleNavbar />
 
       <div className="min-h-screen mt-5 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-6">

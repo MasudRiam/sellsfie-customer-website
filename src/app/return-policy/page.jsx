@@ -4,7 +4,7 @@ import bodymainImage from "@/assets/img/coconut.jpg";
 import { AccordionReturn } from './Accordion';
 const page = () => {
   return (
-    <div className='pb-20'>
+    <div className='pb-20 py-5'>
       <div className="relative w-full">
         {/* Image */}
         <Image
@@ -26,7 +26,7 @@ const page = () => {
         </div> */}
       </div>
 
-      <div className='max-w-3xl mx-auto'>
+      <div className='max-w-3xl mx-auto px-4'>
         <AccordionReturn />
       </div>
     </div>
