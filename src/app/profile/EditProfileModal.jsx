@@ -66,14 +66,14 @@ export default function EditProfileModal({
         <div className="mt-4 flex gap-3">
           <button
             onClick={() => setOpen(false)}
-            className="w-full rounded bg-gray-200 py-2"
+            className="w-full rounded bg-gray-200 hover:bg-red-500 py-2 cursor-pointer"
           >
             Cancel
           </button>
 
           <button
             onClick={handleSave}
-            className="w-full rounded bg-blue-600 py-2 text-white"
+            className="w-full rounded bg-green-700 hover:bg-[#2e2e2e] text-white py-2 cursor-pointer"
           >
             Save
           </button>

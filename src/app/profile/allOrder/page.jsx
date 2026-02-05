@@ -88,9 +88,9 @@ const page = () => {
                 variant="outline"
                 className={
                   order.status === "Delivered"
-                    ? "bg-emerald-100 text-emerald-700 border-emerald-200 hover:bg-emerald-100"
+                    ? "bg-green-700 text-white border-green-700 hover:bg-green-800"
                     : order.status === "Pending"
-                    ? "bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-100"
+                    ? "bg-amber-400 text-white border-yellow-600 hover:bg-amber-800"
                     : order.status === "Processing"
                     ? "bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100"
                     : order.status === "Cancelled"

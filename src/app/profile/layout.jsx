@@ -53,10 +53,10 @@ const handleLogout = () => {
               <Link
                 key={item.title}
                 href={item.url}
-                className={`flex items-center no-underline hover:underline gap-3 px-4 py-2 rounded-lg font-medium transition
+                className={`flex items-center no-underline hover:underline-offset-2 hover:underline gap-3 px-4 py-2 rounded-lg font-medium transition
                   ${
                     active
-                      ? "bg-green-100 text-green-700 underline"
+                      ? "bg-green-700 hover:bg-[#2e2e2e] text-white  underline underline-offset-2"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
                 onClick={() => setOpen(false)}
