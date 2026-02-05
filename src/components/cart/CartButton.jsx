@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { useCart } from "@/context/cart-context";
+import { useCartStore } from "@/store/cart-store";
 
 const CartButton = ({ product }) => {
-  const { addToCart } = useCart();
+  const { addToCart } = useCartStore();
   return (
     <button
       onClick={() => addToCart(product)}

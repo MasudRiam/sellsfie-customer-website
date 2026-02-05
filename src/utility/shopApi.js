@@ -1,3 +1,4 @@
+import { ca } from "zod/v4/locales";
 import { serverFetch } from "./server-fetch";
 
 const SHOP_URL = "teqfiexyz";
@@ -21,20 +22,13 @@ export const shopApi = {
 
   getHotProducts: () =>
     serverFetch(`api/client/${SHOP_URL}/product/top-products`, {
-      next: { revalidate: 3600 }, // Revalidate every hour
+      next: { revalidate: 3600 },
     }),
 
   getProductDetails: (productId) =>
     serverFetch(`api/client/${SHOP_URL}/product/details/${productId}`, {
       cache: "no-store", // Always fetch fresh data
     }),
-
-    getUserInfo: () =>
-      serverFetch(`api/client/shop/info/${SHOP_URL}`, {
-        cache: "no-store", // Always fetch fresh data
-      }),
-
-
 };
 
 

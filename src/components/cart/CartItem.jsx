@@ -1,6 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useCartStore } from "@/store/cart-store";
 
 const CartItem = ({ item }) => {
+  const updateQty = useCartStore((state) => state.updateQty);
+  const removeItem = useCartStore((state) => state.removeItem);
+
+
   return (
     <>
       <div className="md:hidden border-b py-4">
@@ -17,7 +24,7 @@ const CartItem = ({ item }) => {
               <h3 className="text-sm font-medium leading-snug">
                 {item.name}
               </h3>
-              <button className="text-xs text-gray-500 underline mt-1">
+              <button onClick={() => removeItem(item.id)} className="text-xs text-gray-500 underline mt-1">
                 Remove
               </button>
             </div>
@@ -29,9 +36,9 @@ const CartItem = ({ item }) => {
             </p>
 
             <div className="flex items-center justify-end border rounded mt-2">
-              <button className="px-3 py-1">-</button>
+              <button onClick={() => updateQty(item.id, "dec")} className="px-3 py-1">-</button>
               <span className="px-3 text-sm">{item.qty}</span>
-              <button className="px-3 py-1">+</button>
+              <button onClick={() => updateQty(item.id, "inc")} className="px-3 py-1">+</button>
             </div>
           </div>
         </div>
@@ -48,7 +55,7 @@ const CartItem = ({ item }) => {
           />
           <div>
             <h3 className="text-sm font-medium">{item.name}</h3>
-            <button className="text-xs text-gray-500 underline mt-1">
+            <button onClick={() => removeItem(item.id)} className="text-xs text-gray-500 underline mt-1">
               Remove
             </button>
           </div>
@@ -60,9 +67,9 @@ const CartItem = ({ item }) => {
 
         <div className="md:col-span-3 flex justify-center">
           <div className="flex items-center border rounded">
-            <button className="px-3 py-1">-</button>
+            <button onClick={() => updateQty(item.id, "dec")} className="px-3 py-1" >-</button>
             <span className="px-4">{item.qty}</span>
-            <button className="px-3 py-1">+</button>
+            <button onClick={() => updateQty(item.id, "inc")} className="px-3 py-1">+</button>
           </div>
         </div>
 

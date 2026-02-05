@@ -31,6 +31,7 @@ import Link from "next/link";
 // ];
 export function ShopCarousel({ hotProductsData = [] }) {
   const shops = hotProductsData.data || [];
+  console.log("Shops in ShopCarousel:", shops);
 
   console.log("Hot products data in ShopCarousel:", shops);
   const autoplay = React.useRef(

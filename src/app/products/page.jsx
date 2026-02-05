@@ -19,10 +19,10 @@ import { shopApi } from "@/utility/shopApi";
 
 export default async function page({ searchParams }) {
   const { category_id } = await searchParams;
-  console.log("Category ID from params:", category_id);
+  // console.log("Category ID from params:", category_id);
   const allProducts = await shopApi.getAllProducts(category_id);
   const categoryProducts = allProducts?.data?.data || [];
-  console.log("Category Products:", categoryProducts);
+  // console.log("Category Products:", categoryProducts);
   return (
     <>
       <section className="mx-auto w-full max-w-[1280px] px-1 py-4 sm:px-3 sm:py-8">
@@ -79,7 +79,9 @@ export default async function page({ searchParams }) {
                       )}
                       <div className="relative h-37 sm:h-42 lg:h-55 w-full">
                         <Image
-                          src={product.thumbnail_image?.url || "/placeholder.png"}
+                          src={
+                            product.thumbnail_image?.url || "/placeholder.png"
+                          }
                           alt={product.name}
                           fill
                           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
@@ -91,7 +93,16 @@ export default async function page({ searchParams }) {
                           {product.name}
                         </p>
                         <p className="mt-4 font-semibold text-black hover:text-green-700">
-                          Tk {product.unit_price}
+                          {product.price?.has_discount ? (
+                            <>
+                              <span className="mr-2 text-sm text-gray-400 line-through">
+                                Tk {product?.price?.original}
+                              </span>
+                              <span>Tk {product?.price?.final}</span>
+                            </>
+                          ) : (
+                            <span>Tk {product?.price?.final}</span>
+                          )}
                         </p>
                       </div>
                     </Link>

@@ -1,16 +1,12 @@
 import React from "react";
-import pizzaImg from "@/assets/img/product/pizza.png";
-import Image from "next/image";
 import ProductTab from "../productTab";
-import plasticBottol from "@/assets/img/product/plastic-bottol.jpg";
-import cosmetics from "@/assets/img/product/cosmetics.png";
 import ImgCarousel from "../imgCarousel";
 import { shopApi } from "@/utility/shopApi";
 import { notFound } from "next/navigation";
 import he from "he";
 import QuantitySelector from "../QuantitySelector";
+import ProductAction from "../ProductAction";
 
-// const productsImg = [pizzaImg, plasticBottol, cosmetics];
 
 export default async function page({ params }) {
   const { id } = await params;
@@ -87,16 +83,16 @@ export default async function page({ params }) {
             </div>
           )}
 
-          <QuantitySelector maxQuantity={product.quantity} />
+          <ProductAction product={product} maxQuantity={product.quantity} />
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* <div className="flex flex-col sm:flex-row gap-4">
             <button className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700">
               Add to cart
             </button>
             <button className="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-500">
               Buy it now
             </button>
-          </div>
+          </div> */}
           {/* 
           <button className="mt-4 text-sm text-gray-600 hover:text-green-600">
             ♡ Wishlist

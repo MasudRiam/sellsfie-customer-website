@@ -1,8 +1,14 @@
 import React from "react";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
 import Link from "next/link";
+import Image from "next/image";
+import { shopApi } from "@/utility/shopApi";
 
-const Footer = () => {
+export default async function Footer() {
+  const aboutShop = await shopApi.getShopAbout();
+  const aboutInfo = aboutShop?.data || {};
+  console.log ("Fetched About Shop Data in Footer:", aboutInfo);
+
   return (
     <div>
       <footer>
@@ -10,11 +16,19 @@ const Footer = () => {
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
             <div>
               <div className="flex items-center gap-3">
-                <img src={sellsfieLogo.src} alt="Logo" className="h-10" />
+                  <Image
+                    src={aboutInfo.logo}
+                    alt="Logo"
+                    className="h-10"
+                    width={40}
+                    height={40}
+                    title={aboutInfo.name}
+                  />
+
               </div>
 
               <h3 className="mt-4 text-lg font-semibold text-gray-900">
-                Sellsfie: Your Trusted Source for Shopping &amp; Healthy Living
+                {aboutInfo.name}
               </h3>
 
               <p className="mt-3 text-sm leading-6 text-gray-600">
@@ -118,6 +132,4 @@ const Footer = () => {
       </footer>
     </div>
   );
-};
-
-export default Footer;
+}
