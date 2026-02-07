@@ -1,11 +1,11 @@
 import React from "react";
-import ProductTab from "../productTab";
-import ImgCarousel from "../imgCarousel";
+import ProductTab from "../../product/productTab";
+import ImgCarousel from "../../product/imgCarousel";
 import { shopApi } from "@/utility/shopApi";
 import { notFound } from "next/navigation";
 import he from "he";
-import QuantitySelector from "../QuantitySelector";
-import ProductAction from "../ProductAction";
+import QuantitySelector from "../../product/QuantitySelector";
+import ProductAction from "../../product/ProductAction";
 
 
 export default async function page({ params }) {

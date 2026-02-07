@@ -74,7 +74,7 @@ export default function ProfileClient({ UserInfo }) {
       {/* Button */}
       <button
         onClick={() => setOpen(true)}
-        className="mt-8 w-full rounded-lg bg-blue-600 py-3 text-white hover:bg-blue-700 transition"
+        className="mt-8 w-full rounded-lg bg-green-700 hover:bg-[#2e2e2e] text-white py-3 cursor-pointer transition"
       >
         Edit Profile
       </button>

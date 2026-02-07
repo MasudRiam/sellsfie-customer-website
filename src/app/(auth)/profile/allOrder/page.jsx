@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { Eye, EyeIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -57,7 +58,7 @@ const page = () => {
         <th className="px-6 py-4 font-medium">Date</th>
         <th className="px-6 py-4 font-medium">Total</th>
         <th className="px-6 py-4 font-medium">Status</th>
-        <th className="px-6 py-4">Action</th>
+        <th className="px-6 py-4 font-medium">Action</th>
       </tr>
     </thead>
 
@@ -88,13 +89,13 @@ const page = () => {
                 variant="outline"
                 className={
                   order.status === "Delivered"
-                    ? "bg-emerald-100 text-emerald-700 border-emerald-200 hover:bg-emerald-100"
+                    ? "bg-green-700 text-white "
                     : order.status === "Pending"
-                    ? "bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-100"
+                    ? "bg-[#ff9f43] text-white"
                     : order.status === "Processing"
-                    ? "bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-100"
+                    ? "bg-[#00cfe8] text-white"
                     : order.status === "Cancelled"
-                    ? "bg-red-100 text-red-700 border-red-200 hover:bg-red-100"
+                    ? "bg-[#ea3c3c] text-white"
                     : "bg-gray-100 text-gray-600 border-gray-200 hover:bg-gray-100"
                 }
               >
@@ -102,11 +103,15 @@ const page = () => {
               </Badge>
             </td>
 
-            <td className="px-6 py-4">
-              <Link href="/order" className="text-sm font-medium text-green-600 hover:underline">
-                View
-              </Link>
-            </td>
+        <td className="px-6 py-4">
+          <Link
+            href="/order"
+            className="inline-flex items-center justify-center p-2 rounded-md bg-green-700 text-white hover:bg-green-800 transition"
+          >
+            <EyeIcon size={20} />
+          </Link>
+        </td>
+
           </tr>
         ))
       ) : (
