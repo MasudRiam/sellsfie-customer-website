@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientProviders from "@/components/layout/ClientProviders";
-import NavbarFooterWrapper from "@/components/layout/NavbarFooterWrapper";
 import NavbarServer from "@/HomePage/Navbar-Server";
 // import FooterServer from "@/HomePage/Footer-Server";
 
@@ -27,9 +26,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <ClientProviders>
-          <NavbarFooterWrapper navbar={<NavbarServer />}>
             {children}
-          </NavbarFooterWrapper>
         </ClientProviders>
       </body>
     </html>

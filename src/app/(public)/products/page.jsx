@@ -1,10 +1,6 @@
 import React from "react";
 import FilterProducts from "./filterProducts";
 import Image from "next/image";
-import cosmeticsProduct from "@/assets/img/product/cosmetics.png";
-import pizzaproduct from "@/assets/img/product/pizza.png";
-import plasticbottol from "@/assets/img/product/plastic-bottol.jpg";
-import flowerpot from "@/assets/img/product/flower-pot.jpg";
 import { IoIosArrowDown } from "react-icons/io";
 import Link from "next/link";
 
