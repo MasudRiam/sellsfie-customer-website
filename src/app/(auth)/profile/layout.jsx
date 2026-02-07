@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { User, ShoppingBag, MapPin, X, Menu, LogOut } from "lucide-react";
-import SimpleNavbar from "../(public)/checkout/SimpleNavbar";
+import SimpleNavbar from "../checkout/SimpleNavbar";
 import { removeToken } from "@/utility/helper";
 import { useRouter } from "next/navigation";
 
