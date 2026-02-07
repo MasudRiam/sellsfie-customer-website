@@ -58,7 +58,7 @@ const page = () => {
         <th className="px-6 py-4 font-medium">Date</th>
         <th className="px-6 py-4 font-medium">Total</th>
         <th className="px-6 py-4 font-medium">Status</th>
-        <th className="px-6 py-4">Action</th>
+        <th className="px-6 py-4 font-medium">Action</th>
       </tr>
     </thead>
 
