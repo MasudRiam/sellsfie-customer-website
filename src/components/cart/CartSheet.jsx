@@ -4,6 +4,7 @@ import {
   SheetContent,
   SheetDescription,
   SheetHeader,
+  SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,8 @@ import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCartStore } from "@/store/cart-store";
+import NoteSheet from "./NoteSheet";
+import CouponSheet from "./CouponSheet";
 
 export default function CartSheet() {
   const { open, setOpen, items, updateQty, removeItem } = useCartStore();
@@ -76,8 +79,18 @@ export default function CartSheet() {
         </div>
 
         <div className="grid grid-cols-2 bg-gray-100 p-2 shadow-sm text-sm">
-          <button className="py-3 cursor-pointer">✏️ Note</button>
+          <Sheet>
+          <SheetTrigger asChild>
+            <button className="py-3 cursor-pointer">✏️ Note</button>
+          </SheetTrigger>
+          <NoteSheet />
+          </Sheet>
+          <Sheet>
+          <SheetTrigger asChild>
           <button className="py-3 border-l cursor-pointer">🎟️ Coupon</button>
+          </SheetTrigger>
+          <CouponSheet />
+          </Sheet>
         </div>
 
         <div className="px-4 py-2 space-y-3">
