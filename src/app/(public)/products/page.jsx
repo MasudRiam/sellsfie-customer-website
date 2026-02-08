@@ -12,13 +12,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { shopApi } from "@/utility/shopApi";
+import { Badge } from "@/components/ui/badge";
+import CartButton from "@/components/cart/CartButton";
 
 export default async function page({ searchParams }) {
   const { category_id } = await searchParams;
   // console.log("Category ID from params:", category_id);
   const allProducts = await shopApi.getAllProducts(category_id);
   const categoryProducts = allProducts?.data?.data || [];
-  // console.log("Category Products:", categoryProducts);
+  console.log("Category Products:", categoryProducts);
   return (
     <>
       <section className="mx-auto w-full max-w-[1280px] px-1 py-4 sm:px-3 sm:py-8">
@@ -64,6 +66,11 @@ export default async function page({ searchParams }) {
                     key={product.id}
                     className="border border-gray-300 bg-white p-4 text-center hover:shadow-md h-[min-content] transition flex flex-col relative"
                   >
+                    <Badge
+                      className="absolute top-2 left-2 z-10 text-white bg-[#38ce00]"
+                    >
+                      stock: {Number(product.available_stock)}
+                    </Badge>
                     <Link
                       href={`/product/${product.id}`}
                       className="no-underline"
@@ -102,9 +109,11 @@ export default async function page({ searchParams }) {
                         </p>
                       </div>
                     </Link>
-                    <button className="mt-4 w-full rounded bg-robinhood py-2 text-sm text-white cursor-pointer">
-                      Quick Add
-                    </button>
+
+                    <CartButton
+                      disabled={Number(product.available_stock) === 0}
+                      product={{ id: product.id, name: product.name, price: product?.price?.final, img: product.thumbnail_image.url }}
+                    />
                   </div>
                 ))}
               </div>

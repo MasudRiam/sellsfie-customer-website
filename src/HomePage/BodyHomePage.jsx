@@ -11,6 +11,7 @@ import Link from "next/link";
 import CartButton from "@/components/cart/CartButton";
 import { shopApi } from "@/utility/shopApi";
 import ShopCarouselServer from "./ShopCarousel-server";
+import { Badge } from "@/components/ui/badge";
 
 export default async function BodyHomePage() {
   const productsData = await shopApi.getAllProducts();
@@ -60,7 +61,13 @@ export default async function BodyHomePage() {
 
            {products.length > 0 ? (
               products.map((product) => (
-              <div key={product.id} className="border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full flex flex-col">
+              <div key={product.id} className="relative border border-gray-300 bg-white p-4 text-center hover:shadow-md transition h-full flex flex-col">
+                <Badge
+                  className="absolute top-2 left-2 z-10 text-white bg-[#38ce00]"
+                >
+                  stock: {Number(product.available_stock)}
+                </Badge>
+
               <Link href={`/product/${product.id}`} className="no-underline">
             <div className="relative h-40">
                 <Image
@@ -90,7 +97,10 @@ export default async function BodyHomePage() {
                   </p>
                 </div>
               </Link>
-              <CartButton product={{ id: product.id, name: product.name, price: product?.price?.final, img: product.thumbnail_image.url }} />
+              <CartButton 
+                disabled={Number(product.available_stock) === 0}
+              product={{ id: product.id, name: product.name, price: product?.price?.final, img: product.thumbnail_image.url }} 
+              />
             </div>
             ))
           ) : (
