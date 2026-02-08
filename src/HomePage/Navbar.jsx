@@ -12,18 +12,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CiLogin } from "react-icons/ci";
 import { useCartStore } from "@/store/cart-store";
+import userLogo from "@/assets/logo/user.png";
+import { getToken } from "@/utility/helper";
 import Image from "next/image";
 
 export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
   const [open, setOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const { setOpen: setCartOpen, open: cartOpen } = useCartStore();
 
   const aboutShop = aboutShopData.data || {};
 
   const [showCategory, setShowCategory] = useState(true);
   const lastScrollY = useRef(0);
-
   const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const token = getToken();
+    setIsLoggedIn(!!token);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -90,9 +98,15 @@ export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
                   9
                 </span> */}
                 </div>
-                <Link href="/login">
-                  <FiUser className="text-xl text-fren cursor-pointer" />
-                </Link>
+                {isLoggedIn ? (
+                  <Link href="/profile">
+                    <Image src={userLogo} alt="User Logo" width={23} height={23} />
+                  </Link>
+                ) : (
+                  <Link href="/login">
+                    <FiUser className="text-xl text-fren cursor-pointer" />
+                  </Link>
+                )}
               </div>
             </div>
 
@@ -184,13 +198,26 @@ export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
                 {/* <Link href="/login">
                   <FiUser className="text-xl text-fren cursor-pointer" />
                 </Link> */}
-                <Link
-                  href="/login"
-                  className="flex items-center px-2 py-1 gap-1 border rounded-sm bg-green-700 hover:bg-[#2e2e2e] text-white no-underline"
-                >
-                  <CiLogin size={18} />
-                  <span>Login</span>
-                </Link>
+                {isLoggedIn ? (
+                  <>
+                    <Link href="/profile">
+                      <Image
+                        src={userLogo}
+                        alt="User Logo"
+                        width={32}
+                        height={32}
+                      />
+                    </Link>
+                  </>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="flex items-center px-2 py-1 gap-1 border rounded-sm bg-green-700 hover:bg-[#2e2e2e] text-white no-underline"
+                  >
+                    <CiLogin size={18} />
+                    <span>Login</span>
+                  </Link>
+                )}
 
                 <div
                   className="relative flex items-center gap-1 border rounded-sm bg-green-700 hover:bg-[#2e2e2e] text-white px-2 py-1 cursor-pointer"
