@@ -5,5 +5,6 @@ export default async function Page() {
   // Server-side fetch
   const UserInfo = await shopApi.getUserInfo();
 
-  return <ProfileClient UserInfo={UserInfo.data} />;
+  const user = UserInfo?.data || {};
+  return <ProfileClient user={user} />;
 }
