@@ -35,7 +35,7 @@ const page = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="max-w-7xl mx-auto px-4 py-10 mb-12 mt-8">
       <div className="grid grid-cols-12 text-sm font-semibold border-b pb-3">
         <div className="col-span-6 md:col-span-3">Product</div>
         <div className="col-span-6 md:col-span-3 text-right max-[430px]:hidden">
