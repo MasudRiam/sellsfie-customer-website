@@ -53,7 +53,7 @@ const page = () => {
         ))}
       </div>
 
-      <div className="flex mt-1 py-4 text-sm bg-gray-100 p-2">
+      {/* <div className="flex mt-1 py-4 text-sm bg-gray-100 p-2">
         <button className="flex-1 flex items-center justify-center gap-2 cursor-pointer">
           ✏️ Note
         </button>
@@ -61,19 +61,49 @@ const page = () => {
         <button className="flex-1 flex items-center justify-center gap-2 cursor-pointer">
           💳 Coupon
         </button>
-      </div>
+      </div> */}
+  {/* input field for coupon and apply btn and textarea for note and save btn */}
+<div className="flex justify-between items-start border-b pb-2">
+  <div className="flex gap-4 mt-6 flex-wrap">
 
-      <div className="py-4">
-        <div className="flex justify-between font-medium">
-          <span>Subtotal</span>
-          <span>Tk 21,200</span>
-        </div>
-        <p className="text-xs text-gray-500 mt-1">
-          Taxes and shipping calculated at checkout
-        </p>
-      </div>
+    {/* Coupon */}
+    <div className="flex gap-2 items-start">
+      <input
+        type="text"
+        placeholder="Coupon code"
+        className="border px-4 py-2 rounded w-56 flex-none"
+      />
+      <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 h-fit flex-none">
+        Apply
+      </button>
+    </div>
 
-      <div className="space-y-3 flex justify-end">
+    {/* Note */}
+    <div className="flex gap-2 items-start">
+      <textarea
+        rows={2}
+        placeholder="Order note"
+        className="border px-4 py-2 rounded w-56 resize-none flex-none"
+      />
+      <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 h-fit flex-none">
+        Save
+      </button>
+    </div>
+
+  </div>
+
+  <div className="py-4">
+    <div className="flex justify-between w-64 font-medium">
+      <span>Subtotal</span>
+      <span>Tk 21,200</span>
+    </div>
+    <p className="text-xs text-gray-500 mt-1">
+      Taxes and shipping calculated at checkout
+    </p>
+  </div>
+</div>
+
+      <div className="space-y-3 flex justify-end pt-2">
         <button className="bg-green-600 text-white px-8 py-3 rounded hover:bg-green-700">
           Place Order
         </button>

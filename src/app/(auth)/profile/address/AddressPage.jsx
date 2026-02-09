@@ -28,7 +28,7 @@ export default function AddressPage ({user}) {
   const [addresses, setAddresses] = useState(addressesData);
   const [data, setData] = useState(user);
 
-  console.log("data", data)
+//   console.log("data", data)
   const handleSelect = (id) => setSelectedId(id);
 
   const handleDelete = (id) => {
