@@ -411,8 +411,24 @@ const Page = () => {
                             <span>Shipping</span>
                             <span>৳70.00</span>
                           </div>
+                          {/* input field with apply btn */}
+                          <div className="flex my-2">
+                            <Input
+                              placeholder="Coupon code"
+                              className="focus-visible:border-green-700 w-full rounded-none
+                              focus:outline-none 
+                              focus:ring-0 
+                              focus-visible:ring-0 
+                              focus-visible:ring-offset-0 
+                              focus-visible:outline-none 
+                              "
+                            />
+                            <Button className="rounded-l-none bg-green-700 hover:bg-green-600 cursor-pointer">
+                              Apply
+                            </Button>
+                       </div>
+                          </div>
                         </div>
-                      </div>
                     )}
                   </div>
 

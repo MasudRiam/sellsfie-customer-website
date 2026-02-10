@@ -98,7 +98,7 @@ const handleLogout = () => {
           >
             <Menu />
           </button>
-          <h1 className="text-xl font-semibold capitalize">
+          <h1 className="text-xl m-0 font-semibold capitalize">
             {pathname.split("/").pop()}
           </h1>
         </header>

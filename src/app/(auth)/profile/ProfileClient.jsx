@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import EditProfileModal from "./EditProfileModal";
 
-export default function ProfileClient({ UserInfo }) {
-  const [data, setData] = useState(UserInfo); // server fetched data
+export default function ProfileClient({ user }) {
+  const [data, setData] = useState(user); // server fetched data
   const [open, setOpen] = useState(false);
 
   return (

@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import he from "he";
 import QuantitySelector from "../../product/QuantitySelector";
 import ProductAction from "../../product/ProductAction";
+import VariantShow from "./VariantShow";
 
 
 export default async function page({ params }) {
@@ -24,7 +25,7 @@ export default async function page({ params }) {
     ? [productMainImg, ...productGalleryImgs]
     : productGalleryImgs;
 
-  // console.log("Product Details:", product);
+  console.log("Product Details:", product);
 
   const escapedDescription = he.decode(product.description || "");
 
@@ -59,29 +60,7 @@ export default async function page({ params }) {
 
           <p className="text-2xl font-bold mb-4">Tk {product.unit_price}</p>
 
-          {/* <div dangerouslySetInnerHTML={{ __html: escapedDescription }} /> */}
-
-          {Object.keys(groupedVariants).length > 0 && (
-            <div className="space-y-4 mb-5 mt-4">
-              {Object.entries(groupedVariants).map(([variantType, options]) => (
-                <div key={variantType}>
-                  <p className="font-medium mb-2">{variantType}:</p>
-                    
-                  <div className="flex flex-wrap gap-2">
-                    {/* {options.map((option) => (
-                      <button
-                        key={option.id || option.value}
-                        className="border px-4 py-1 text-sm rounded hover:border-green-500 hover:text-green-600"
-                      >
-                        {option.value || option.name}
-                        {console.log("Variant Option:", option)}
-                      </button>
-                    ))} */}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+            <VariantShow product={product} />
 
           <ProductAction product={product} maxQuantity={product.quantity} />
 

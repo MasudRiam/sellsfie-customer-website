@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
-import { FiUser } from 'react-icons/fi';
+import { FiShoppingBag, FiUser } from 'react-icons/fi';
 
 export default function SimpleNavbar() {
   return (
@@ -18,12 +18,13 @@ export default function SimpleNavbar() {
                 </div>
   
                 <div className="flex items-center gap-6">
-                  {/* <div className="relative">
-                    <FiShoppingBag
-                      onClick={() => setCartOpen(true)}
-                      className="text-xl text-fren cursor-pointer"
-                    />
-                  </div> */}
+                  <div className="relative">
+                    <Link href="/cart">
+                      <FiShoppingBag
+                        className="text-xl text-fren cursor-pointer"
+                      />
+                    </Link>
+                  </div>
                   <Link href="/login">
                     <FiUser className="text-xl text-fren cursor-pointer" />
                   </Link>
