@@ -35,7 +35,7 @@ const Error404 = () => {
             asChild
             className="h-11 mt-8 min-w-[170px] rounded-md bg-gradient-to-r from-lime-400 to-green-500 px-8 text-white shadow-md"
           >
-            <Link href="/">Go Back Home</Link>
+            <Link href="/" className="no-underline">Go Back Home</Link>
           </Button>
         </section>
       </div>
