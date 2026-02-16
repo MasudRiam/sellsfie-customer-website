@@ -7,6 +7,18 @@ import { User, ShoppingBag, MapPin, X, Menu, LogOut } from "lucide-react";
 import SimpleNavbar from "../checkout/SimpleNavbar";
 import { removeToken } from "@/utility/helper";
 import { useRouter } from "next/navigation";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+
 
 export default function DashboardLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -20,7 +32,7 @@ export default function DashboardLayout({ children }) {
 
 const handleLogout = () => {
   removeToken();       
-  router.push("/login");
+  router.push("/");
 };
 
   return (
@@ -70,12 +82,38 @@ const handleLogout = () => {
 
         <div className="px-4">
           {/* logout */}
-      <button
-        onClick={handleLogout}
-      className="px-4 py-2 gap-3 mt-4 hover:underline w-full cursor-pointer flex text-gray-700 items-center rounded-lg hover:bg-red-100 hover:text-red-700 transition-colors font-medium">
-        <LogOut size={18}/> Logout
-      </button>
-      
+            <Dialog>
+              <DialogTrigger asChild>
+                <button
+                  className="px-4 py-2 gap-3 mt-4 w-full cursor-pointer flex text-gray-700 items-center rounded-lg hover:bg-red-100 hover:text-red-700 transition-colors font-medium"
+                >
+                  <LogOut size={18} /> Logout
+                </button>
+              </DialogTrigger>
+
+              <DialogContent className="sm:max-w-sm">
+                <DialogHeader>
+                  <DialogTitle>Confirm Logout</DialogTitle>
+                  <DialogDescription>
+                    Are you sure you want to logout from your account?
+                  </DialogDescription>
+                </DialogHeader>
+
+                <DialogFooter>
+                  <DialogClose asChild>
+                    <Button className="cursor-pointer" variant="outline">Cancel</Button>
+                  </DialogClose>
+
+                  <Button
+                    variant="destructive"
+                    className="cursor-pointer"
+                    onClick={handleLogout}
+                  >
+                    Yes, Logout
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
 
         </div>
       </aside>
