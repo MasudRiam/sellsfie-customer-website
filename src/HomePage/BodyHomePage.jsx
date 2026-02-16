@@ -6,7 +6,6 @@ import pizzaproduct from "@/assets/img/product/pizza.png";
 import plasticbottol from "@/assets/img/product/plastic-bottol.jpg";
 import flowerpot from "@/assets/img/product/flower-pot.jpg";
 import sllsfieShortLogo from "@/assets/logo/sellsfiemini.png";
-import { ShopCarousel } from "./ShopCarousel";
 import Link from "next/link";
 import CartButton from "@/components/cart/CartButton";
 import { shopApi } from "@/utility/shopApi";
