@@ -5,8 +5,8 @@ export function proxy(request) {
 
   const pathname = request.nextUrl.pathname;
 
-  // If no token and user tries to access /profile → redirect to /
-  if (!token && (pathname.startsWith("/profile") || pathname.startsWith("/checkout"))) {
+  // this is a simple auth check for protected routes. You can expand this logic as needed.
+  if (!token && (pathname.startsWith("/profile"))) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
@@ -16,5 +16,5 @@ export function proxy(request) {
 
 // Run only on routes
 export const config = {
-  matcher: ["/profile/:path*", "/checkout/:path*"], 
+  matcher: ["/profile/:path*"], 
 };
