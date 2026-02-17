@@ -14,6 +14,7 @@ export default function ProductAction({ product, maxQuantity }) {
       name: product.name,
       price: Number(product.unit_price || 0),
       img: product.thumbnail?.url || "",
+      stock: product.quantity || 0,
       qty,
     });
     setOpen(true);

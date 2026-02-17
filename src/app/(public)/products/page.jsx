@@ -112,8 +112,8 @@ export default async function page({ searchParams }) {
 
                     <CartButton
                       disabled={Number(product.available_stock) === 0}
-                      product={{ id: product.id, name: product.name, price: product?.price?.final, img: product.thumbnail_image.url }}
-                    />
+                      product={{ id: product.id, name: product.name, price: product?.price?.final, img: product.thumbnail_image.url, stock: product.available_stock }}
+                      />
                   </div>
                 ))}
               </div>
