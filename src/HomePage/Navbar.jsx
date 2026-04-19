@@ -80,13 +80,15 @@ export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
                   href="/"
                   className="text-lg font-semibold text-fren max-[430px]:ml-4"
                 >
-                  <Image
-                    src={aboutShop?.logo}
-                    alt="Logo"
-                    className="h-8"
-                    width={43}
-                    height={32}
-                  />
+                  {aboutShop?.avatar_logo && (
+                    <Image
+                      src={aboutShop.avatar_logo}
+                      alt="Logo"
+                      className="h-8"
+                      width={43}
+                      height={32}
+                    />
+                  )}
                 </Link>
               </div>
 
@@ -103,7 +105,12 @@ export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
                 </div>
                 {isLoggedIn ? (
                   <Link href="/profile">
-                    <Image src={userLogo} alt="User Logo" width={23} height={23} />
+                    <Image
+                      src={userLogo}
+                      alt="User Logo"
+                      width={23}
+                      height={23}
+                    />
                   </Link>
                 ) : (
                   <Link href="/login">
@@ -186,14 +193,16 @@ export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
                   href="/"
                   className="flex items-center gap-2 cursor-pointer"
                 >
-                  <Image
-                    src={aboutShop?.logo}
-                    alt="Logo"
-                    className="h-10"
-                    width={43}
-                    height={32}
-                    title={aboutShop.name}
-                  />
+                  {aboutShop?.avatar_logo && (
+                    <Image
+                      src={aboutShop.avatar_logo}
+                      alt="Logo"
+                      className="h-10"
+                      width={43}
+                      height={32}
+                      title={aboutShop.name}
+                    />
+                  )}
                 </Link>
               </div>
 
