@@ -7,6 +7,7 @@ import { shopApi } from "@/utility/shopApi";
 export default async function Footer() {
   const aboutShop = await shopApi.getShopAbout();
   const aboutInfo = aboutShop?.data || {};
+  const logoSrc = aboutInfo?.logo || sellsfieLogo;
   console.log ("Fetched About Shop Data in Footer:", aboutInfo);
 
   return (
@@ -17,7 +18,7 @@ export default async function Footer() {
             <div>
               <div className="flex items-center gap-3">
                   <Image
-                    src={aboutInfo.logo}
+                    src={logoSrc}
                     alt="Logo"
                     className="h-10"
                     width={40}

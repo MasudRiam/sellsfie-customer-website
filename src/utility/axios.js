@@ -1,8 +1,9 @@
 import axios from "axios";
 import { getToken } from "./helper";
+import { getBackendUrl } from "./backend-url";
 
 const defaultOptions = {
-  baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
+  baseURL: getBackendUrl(),
   headers: {
     Accept: "application/json",
   },

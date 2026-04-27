@@ -1,19 +1,39 @@
-const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+import { getBackendUrl } from "./backend-url";
 
-export const serverFetch = async (endpoint,{ revalidate = null, noStore = false } = {}) => {
-  const options = {};
+const BASE_URL = getBackendUrl();
 
-  if (noStore) {
-    options.cache = "no-store"; // no caching for auth/private data
-  } else if (revalidate !== null) {
-    options.next = { revalidate }; // ISR caching
+const buildUrl = (baseUrl, endpoint) => {
+  const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+  const normalizedEndpoint = endpoint.startsWith("/")
+    ? endpoint.slice(1)
+    : endpoint;
+
+  return `${normalizedBase}${normalizedEndpoint}`;
+};
+
+export const serverFetch = async (endpoint) => {
+  if (!BASE_URL) {
+    console.error(
+      `serverFetch skipped: backend URL is missing. Endpoint: ${endpoint}`,
+    );
+    return null;
   }
 
-  const res = await fetch(`${BASE_URL}${endpoint}`, options);
+  const options = {
+    cache: "no-store",
+  };
 
-  if (!res.ok) {
-    throw new Error(`Error fetching ${endpoint}: ${res.statusText}`);
+  try {
+    const res = await fetch(buildUrl(BASE_URL, endpoint), options);
+
+    if (!res.ok) {
+      console.error(`Error fetching ${endpoint}: ${res.status} ${res.statusText}`);
+      return null;
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error(`Error fetching ${endpoint}:`, error);
+    return null;
   }
-
-  return res.json();
 };

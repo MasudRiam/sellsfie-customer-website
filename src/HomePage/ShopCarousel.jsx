@@ -29,8 +29,8 @@ import Link from "next/link";
 //   { id: 9, image: plasticbottol, name: "Shop Nine" },
 //   { id: 10, image: flowerpot, name: "Shop Ten" },
 // ];
-export function ShopCarousel({ hotProductsData = [] }) {
-  const shops = hotProductsData.data || [];
+export function ShopCarousel({ hotProductsData = null }) {
+  const shops = hotProductsData?.data || [];
   console.log("Shops in ShopCarousel:", shops);
 
   console.log("Hot products data in ShopCarousel:", shops);

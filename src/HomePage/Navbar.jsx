@@ -16,13 +16,14 @@ import userLogo from "@/assets/logo/user.png";
 import { getToken } from "@/utility/helper";
 import Image from "next/image";
 
-export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
+export default function Navbar({ categoriesData = null, aboutShopData = null }) {
   const [open, setOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const { setOpen: setCartOpen, open: cartOpen } = useCartStore();
 
-  const aboutShop = aboutShopData.data || {};
+  const aboutShop = aboutShopData?.data || {};
+  const logoSrc = aboutShop?.logo || sellsfieLogo;
 
   const [showCategory, setShowCategory] = useState(true);
   const lastScrollY = useRef(0);
@@ -50,7 +51,7 @@ export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const categories = categoriesData.data || [];
+  const categories = categoriesData?.data || [];
   // console.log("Categories fetched in Navbar:", categories);
 
   const productHref = (category) => ({
@@ -81,7 +82,7 @@ export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
                   className="text-lg font-semibold text-fren max-[430px]:ml-4"
                 >
                   <Image
-                    src={aboutShop?.logo}
+                    src={logoSrc}
                     alt="Logo"
                     className="h-8"
                     width={43}
@@ -187,7 +188,7 @@ export default function Navbar({ categoriesData = [], aboutShopData = {} }) {
                   className="flex items-center gap-2 cursor-pointer"
                 >
                   <Image
-                    src={aboutShop?.logo}
+                    src={logoSrc}
                     alt="Logo"
                     className="h-10"
                     width={43}

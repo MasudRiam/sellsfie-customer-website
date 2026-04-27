@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { getBackendUrl } from "@/utility/backend-url";
 
 export default async function Page({ params }) {
   const { id } = await params;
@@ -12,7 +13,7 @@ export default async function Page({ params }) {
   }
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}api/client/me`,
+    `${getBackendUrl()}api/client/me`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
