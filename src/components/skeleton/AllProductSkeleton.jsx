@@ -3,12 +3,12 @@ import { Skeleton } from "@/components/ui/skeleton"
 export function ProductCardSkeleton() {
   return (
     <div className="relative border border-gray-300 bg-white p-4 text-center h-full flex flex-col">
-      <Skeleton className="absolute top-2 left-2 h-[22px] w-[68px] rounded-full" />
-      <Skeleton className="h-40 w-full" />
-      <Skeleton className="mt-4 h-3.5 w-4/5 mx-auto" />
-      <Skeleton className="mt-1.5 h-3.5 w-3/5 mx-auto" />
-      <Skeleton className="mt-4 h-4 w-1/2 mx-auto" />
-      <Skeleton className="mt-4 h-[38px] w-full" />
+      <Skeleton className="absolute top-2 left-2 h-[22px] w-[68px] rounded-full bg-gray-200" />
+      <Skeleton className="h-40 w-full bg-gray-200" />
+      <Skeleton className="mt-4 h-3.5 w-4/5 mx-auto bg-gray-200" />
+      <Skeleton className="mt-1.5 h-3.5 w-3/5 mx-auto bg-gray-200" />
+      <Skeleton className="mt-4 h-4 w-1/2 mx-auto bg-gray-200" />
+      <Skeleton className="mt-4 h-[38px] w-full bg-gray-200" />
     </div>
   )
 }
