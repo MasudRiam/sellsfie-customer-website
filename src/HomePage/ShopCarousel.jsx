@@ -16,24 +16,8 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 
-
-// const shops = [
-//   { id: 1, image: cosmeticsProduct, name: "Shop One" },
-//   { id: 2, image: pizzaproduct, name: "Shop Two" },
-//   { id: 3, image: plasticbottol, name: "Shop Three" },
-//   { id: 4, image: flowerpot, name: "Shop Four" },
-//   { id: 5, image: cosmeticsProduct, name: "Shop Five" },
-//   { id: 6, image: pizzaproduct, name: "Shop Six" },
-//   { id: 7, image: cosmeticsProduct, name: "Shop Seven" },
-//   { id: 8, image: pizzaproduct, name: "Shop Eight" },
-//   { id: 9, image: plasticbottol, name: "Shop Nine" },
-//   { id: 10, image: flowerpot, name: "Shop Ten" },
-// ];
 export function ShopCarousel({ hotProductsData = null }) {
   const shops = hotProductsData?.data || [];
-  console.log("Shops in ShopCarousel:", shops);
-
-  console.log("Hot products data in ShopCarousel:", shops);
   const autoplay = React.useRef(
     Autoplay({
       delay: 4000,

@@ -19,7 +19,7 @@ export default function QuantitySelector({ maxQuantity, value, onChange }) {
   };
 
   return (
-    <div className="flex items-center gap-4 mb-6">
+    <div className="flex items-center gap-4 mb-3">
       <p className="font-medium">Quantity:</p>
       <div className="flex border rounded">
         <button

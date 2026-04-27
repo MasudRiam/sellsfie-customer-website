@@ -63,23 +63,6 @@ export default async function page({ params }) {
             <VariantShow product={product} />
 
           <ProductAction product={product} maxQuantity={product.quantity} />
-
-          {/* <div className="flex flex-col sm:flex-row gap-4">
-            <button className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700">
-              Add to cart
-            </button>
-            <button className="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-500">
-              Buy it now
-            </button>
-          </div> */}
-          {/* 
-          <button className="mt-4 text-sm text-gray-600 hover:text-green-600">
-            ♡ Wishlist
-          </button>
-
-          <p className="text-sm text-gray-500 mt-4">
-            SKU: <span className="text-black">123456</span>
-          </p> */}
         </div>
 
         {/* RIGHT: Info Cards */}
