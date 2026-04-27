@@ -6,7 +6,7 @@ import { GoSearch } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
 import Link from "next/link";
-import SearchSheet from "@/context/search-sheet";
+import dynamic from "next/dynamic";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,10 @@ import { useCartStore } from "@/store/cart-store";
 import userLogo from "@/assets/logo/user.png";
 import { getToken } from "@/utility/helper";
 import Image from "next/image";
+
+const SearchSheet = dynamic(() => import("@/context/search-sheet"), {
+  ssr: false,
+});
 
 export default function Navbar({ categoriesData = null, aboutShopData = null }) {
   const [open, setOpen] = useState(false);

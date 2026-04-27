@@ -7,10 +7,7 @@ import plasticbottol from "@/assets/img/product/plastic-bottol.jpg";
 import flowerpot from "@/assets/img/product/flower-pot.jpg";
 import sllsfieShortLogo from "@/assets/logo/sellsfiemini.png";
 import Link from "next/link";
-import CartButton from "@/components/cart/CartButton";
-import { shopApi } from "@/utility/shopApi";
 import ShopCarouselServer from "./ShopCarousel-server";
-import { Badge } from "@/components/ui/badge";
 import { AllProductSkeleton } from "@/components/skeleton/AllProductSkeleton";
 import AllProductGrid from "./AllProductGrid";
 
