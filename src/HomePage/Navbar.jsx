@@ -104,7 +104,12 @@ export default function Navbar({ categoriesData = null, aboutShopData = null }) 
                 </div>
                 {isLoggedIn ? (
                   <Link href="/profile">
-                    <Image src={userLogo} alt="User Logo" width={23} height={23} />
+                    <Image
+                      src={userLogo}
+                      alt="User Logo"
+                      width={23}
+                      height={23}
+                    />
                   </Link>
                 ) : (
                   <Link href="/login">
