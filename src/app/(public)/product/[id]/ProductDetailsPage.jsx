@@ -1,0 +1,101 @@
+import React from "react";
+import ProductTab from "../../product/productTab";
+import ImgCarousel from "../../product/imgCarousel";
+import { shopApi } from "@/utility/shopApi";
+import { notFound } from "next/navigation";
+import he from "he";
+import QuantitySelector from "../../product/QuantitySelector";
+import ProductAction from "../../product/ProductAction";
+import VariantShow from "./VariantShow";
+
+
+export default async function ProductDetailsPage({ params }) {
+  const { id } = await params;
+  const productDetails = await shopApi.getProductDetails(id);
+
+  if (!productDetails?.data) {
+    notFound();
+  }
+
+  const product = productDetails.data;
+
+  const productMainImg = product.thumbnail?.url || "";
+  const productGalleryImgs = product.galleries?.map((img) => img.image) || [];
+  const productsImg = productMainImg
+    ? [productMainImg, ...productGalleryImgs]
+    : productGalleryImgs;
+
+  console.log("Product Details:", product);
+
+  const escapedDescription = he.decode(product.description || "");
+
+  const groupedVariants =
+    product.variants?.reduce((acc, item) => {
+      const variantType = item.variant;
+      if (!acc[variantType]) {
+        acc[variantType] = [];
+      }
+      acc[variantType].push(item);
+      return acc;
+    }, {}) || {};
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-5">
+          <ImgCarousel images={productsImg} />
+        </div>
+
+        <div className="lg:col-span-5">
+          <h1 className="text-2xl font-semibold mb-2">{product.name}</h1>
+
+          <hr />
+
+          <p className="text-sm mb-2">
+            Availability:{" "}
+            <span className="text-green-600 font-medium">
+              {product.quantity} in stock
+            </span>
+          </p>
+
+          <p className="text-2xl font-bold mb-4">Tk {product.unit_price}</p>
+
+            <VariantShow product={product} />
+
+          <ProductAction product={product} maxQuantity={product.quantity} />
+        </div>
+
+        {/* RIGHT: Info Cards */}
+        <div className="lg:col-span-2 space-y-4">
+          {[
+            {
+              title: "DELIVERY INFO",
+              text: "Delivery within 2–10 days depending on location.",
+            },
+            {
+              title: "30 DAYS RETURNS",
+              text: "Full refund within 7 days including delivery fee.",
+            },
+            {
+              title: "10 YEAR WARRANTY",
+              text: "Quality comes first and products are built to last.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="bg-gray-100 px-2 py-5 text-center hover:shadow-md h-[min-content] transition"
+            >
+              <h3 className="font-semibold mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-600">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="mt-4 pt-5">
+        <ProductTab description={escapedDescription} />
+      </div>
+    </div>
+  );
+}
