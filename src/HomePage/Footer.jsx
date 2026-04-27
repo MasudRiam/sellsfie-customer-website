@@ -5,10 +5,18 @@ import Image from "next/image";
 import { shopApi } from "@/utility/shopApi";
 
 export default async function Footer() {
-  const aboutShop = await shopApi.getShopAbout();
-  const aboutInfo = aboutShop?.data || {};
+  let aboutInfo = {};
+  let hasError = false;
+
+  try {
+    const aboutShop = await shopApi.getShopAbout();
+    aboutInfo = aboutShop?.data || {};
+  } catch (err) {
+    console.error("Footer API error:", err);
+    hasError = true;
+  }
+
   const logoSrc = aboutInfo?.logo || sellsfieLogo;
-  console.log ("Fetched About Shop Data in Footer:", aboutInfo);
 
   return (
     <div>
@@ -17,20 +25,23 @@ export default async function Footer() {
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
             <div>
               <div className="flex items-center gap-3">
-                  <Image
-                    src={logoSrc}
-                    alt="Logo"
-                    className="h-10"
-                    width={40}
-                    height={40}
-                    title={aboutInfo.name}
-                  />
-
+                <Image
+                  src={logoSrc}
+                  alt="Logo"
+                  className="h-10"
+                  width={40}
+                  height={40}
+                  title={aboutInfo.name}
+                />
               </div>
 
               <h3 className="mt-4 text-lg font-semibold text-gray-900">
                 {aboutInfo.name}
               </h3>
+
+              {hasError && (
+                <p className="text-red-500 text-sm">No information available</p>
+              )}
 
               <p className="mt-3 text-sm leading-6 text-gray-600">
                 Sellsfie is a leading e-commerce platform committed to
