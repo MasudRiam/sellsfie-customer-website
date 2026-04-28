@@ -18,15 +18,17 @@ import NoteSheet from "./NoteSheet";
 import CouponSheet from "./CouponSheet";
 import { Badge } from "@/components/ui/badge";
 
+const PLACEHOLDER_IMAGE = "/placeholder.png";
+
 export default function CartSheet() {
   const { open, setOpen, items, updateQty, removeItem } = useCartStore();
 
-  const subtotal = items.reduce((t, i) => t + i.price * i.qty, 0);
+  const subtotal = items.reduce((t, i) => t + (Number(i.price || 0) * Number(i.qty || 0)), 0);
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetContent
         side="right"
-        className="w-[85vw] max-w-[380px] sm:w-[340px] sm:max-w-none md:w-[360px] h-dvh flex flex-col"
+        className="w-[85vw] max-w-95 sm:w-85 sm:max-w-none md:w-90 h-dvh flex flex-col"
       >
         <SheetHeader className="px-4 py-4 border-b">
           <SheetTitle className="text-lg font-medium">Shopping Cart</SheetTitle>
@@ -38,8 +40,8 @@ export default function CartSheet() {
             <div key={item.id} className="flex gap-3 mb-7">
               <div className="w-16 h-16 border flex items-center justify-center">
                 <Image
-                  src={item.img}
-                  alt={item.name}
+                  src={item.img || item.image || PLACEHOLDER_IMAGE}
+                  alt={item.name || "Product image"}
                   className="object-contain"
                   width={64}
                   height={64}
@@ -49,7 +51,7 @@ export default function CartSheet() {
               <div className="flex-1">
                 <p className="text-sm">{item.name}</p>
                 <p className="text-sm font-medium mt-1">
-                  Tk {item.price.toFixed(2)}
+                  Tk {Number(item.price || 0).toFixed(2)}
                 </p>
 
                 <div className="mt-2 flex items-center gap-3">
@@ -100,7 +102,7 @@ export default function CartSheet() {
         <div className="px-4 py-2 space-y-3">
           <div className="flex justify-between text-sm">
             <span>Subtotal</span>
-            <span className="font-semibold">Tk {subtotal.toFixed(2)}</span>
+            <span className="font-semibold">Tk {isNaN(subtotal) ? "0.00" : subtotal.toFixed(2)}</span>
           </div>
 
           <Link href="/checkout" className="">

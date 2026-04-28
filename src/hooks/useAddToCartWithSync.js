@@ -21,8 +21,9 @@ export const useAddToCartWithSync = () => {
   const { addToCart } = useCartStore();
   const addToCartMutation = useAddToCartMutation();
 
-  const addToCartWithAPI = async (cartData) => {
+  const addToCartWithAPI = async (cartData, fullProduct = {}) => {
     // Step 1: Add to localStorage immediately (optimistic update)
+    // Combine cart metadata with full product data (name, price, img, stock, etc.)
     const product = {
       id: cartData.product_id,
       product_id: cartData.product_id,
@@ -30,6 +31,8 @@ export const useAddToCartWithSync = () => {
       quantity: cartData.quantity,
       choice: cartData.choice,
       qty: cartData.quantity,
+      // Include all product data so CartSheet can display it
+      ...fullProduct,
     };
 
     addToCart(product);
