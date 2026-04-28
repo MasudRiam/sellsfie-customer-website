@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCartStore } from "@/store/cart-store";
 import cosmetics from "@/assets/img/product/cosmetics.png";
+import { Badge } from "@/components/ui/badge";
 
 const CartItem = ({ item }) => {
   const updateQty = useCartStore((state) => state.updateQty);
@@ -26,9 +27,9 @@ const CartItem = ({ item }) => {
               <h3 className="text-sm font-medium leading-snug">
                 {item.name}
               </h3>
-              <button onClick={() => removeItem(item.id)} className="text-xs text-gray-500 underline mt-1">
+              <Badge variant="secondary" onClick={() => removeItem(item.id)} className="cursor-pointer">
                 Remove
-              </button>
+              </Badge>
             </div>
           </div>
 
@@ -57,9 +58,9 @@ const CartItem = ({ item }) => {
           />
           <div>
             <h3 className="text-sm font-medium">{item.name}</h3>
-            <button onClick={() => removeItem(item.id)} className="text-xs text-gray-500 underline mt-1">
+            <Badge variant="secondary" onClick={() => removeItem(item.id)} className="cursor-pointer">
               Remove
-            </button>
+            </Badge>
           </div>
         </div>
 
