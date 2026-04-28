@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { useCartStore } from "@/store/cart-store";
+import cosmetics from "@/assets/img/product/cosmetics.png";
 
 const CartItem = ({ item }) => {
   const updateQty = useCartStore((state) => state.updateQty);
   const removeItem = useCartStore((state) => state.removeItem);
+  const imageSrc = item.img || item.image || cosmetics;
 
 
   return (
@@ -14,7 +16,7 @@ const CartItem = ({ item }) => {
         <div className="flex justify-between gap-3">
           <div className="flex gap-3">
             <Image
-              src={item.image}
+              src={imageSrc}
               alt={item.name}
               width={50}
               height={50}
@@ -47,7 +49,7 @@ const CartItem = ({ item }) => {
       <div className="hidden md:grid md:grid-cols-12 gap-4 items-center border-b py-6">
         <div className="md:col-span-5 flex gap-4">
           <Image
-            src={item.image}
+            src={imageSrc}
             alt={item.name}
             width={70}
             height={70}

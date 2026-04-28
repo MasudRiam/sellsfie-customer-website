@@ -106,13 +106,9 @@ export default function CartSheet() {
               onClick={() => setOpen(false)}
               className="w-full mb-1 bg-green-700 text-white cursor-pointer"
             >
-              💳 Pay Online
+              🛒 Order Now
             </Button>
           </Link>
-
-          <Button className="w-full bg-gray-800 text-white hover:bg-gray-500 cursor-pointer">
-            🛒 ক্যাশ অন ডেলিভারিতে অর্ডার করুন
-          </Button>
 
           <Link href="/cart" onClick={() => setOpen(false)}>
             <p className="text-center text-sm cursor-pointer text-black hover:text-green-700">
