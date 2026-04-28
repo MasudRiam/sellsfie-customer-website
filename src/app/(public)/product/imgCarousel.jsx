@@ -37,7 +37,7 @@ export default function ImgCarousel({ images }) {
                   alt="Product Image"
                   className="object-contain bg-gray-100"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={index === 0}
+                  // priority={index === 0}
                 />
               </div>
             </CarouselItem>

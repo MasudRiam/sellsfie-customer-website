@@ -11,14 +11,30 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ChevronDown } from "lucide-react";
-import { FiShoppingBag, FiUser } from "react-icons/fi";
-import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
-import Link from "next/link";
-import pizzaImg from "@/assets/img/product/pizza.png";
 import Image from "next/image";
 import SimpleNavbar from "./SimpleNavbar";
+import { useCartStore } from "@/store/cart-store";
+import { numberFormatterForTaka } from "@/utility/helper";
 
 const Page = () => {
+  const cartItems = useCartStore((state) => state.items);
+
+  const normalizedItems = cartItems.map((cartItem) => {
+    const qty = Math.max(1, Number(cartItem.qty || 1));
+    const price = Number(cartItem.price || 0);
+
+    return {
+      ...cartItem,
+      qty,
+      price,
+      lineTotal: qty * price,
+      imageSrc: cartItem?.img || cartItem?.image || "/placeholder-image.jpg",
+    };
+  });
+
+  const subtotal = normalizedItems.reduce((sum, cartItem) => sum + cartItem.lineTotal, 0);
+  const totalItems = normalizedItems.reduce((sum, cartItem) => sum + cartItem.qty, 0);
+
   const { control } = useForm();
   const [billing, setBilling] = useState("same");
   const [isOrderSummaryOpen, setIsOrderSummaryOpen] = useState(true);
@@ -28,23 +44,12 @@ const Page = () => {
 
   return (
     <>
-    <SimpleNavbar />
+      <SimpleNavbar />
 
       <div className="min-h-screen mt-5 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-6">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <Card className="mb-6 bg-gray-100 border-none rounded-sm">
-                <CardHeader>
-                  <CardTitle className="text-lg">Phone Number</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Input
-                    placeholder="Phone Number"
-                    className="focus-visible:border-green-700 focus-visible:ring-gray-200"
-                  />
-                </CardContent>
-              </Card>
 
               <Card className="mb-6 bg-gray-100 border-none rounded-sm">
                 <CardHeader>
@@ -269,7 +274,7 @@ const Page = () => {
                             Show order summary
                           </span>
                           <span className="text-sm font-semibold">
-                            ৳33,820.00
+                            {numberFormatterForTaka(subtotal)}
                           </span>
                         </div>
                         <ChevronDown
@@ -281,31 +286,33 @@ const Page = () => {
 
                       {isOrderSummaryOpen && (
                         <div>
-                          <ScrollArea className="h-[320px] px-4">
-                            {[1, 2, 3, 4, 5].map((i) => (
+                          <ScrollArea className="h-80 px-4">
+                            {normalizedItems.map((cartItem) => (
                               <div
-                                key={i}
+                                key={cartItem.id}
                                 className="mb-4 flex items-center justify-between"
                               >
                                 <div className="flex items-center gap-3">
                                   <div className="relative h-14 w-14 rounded-md bg-gray-100">
                                     <Image
-                                      src={pizzaImg}
-                                      alt="Product image"
+                                      src={cartItem.imageSrc}
+                                      alt={cartItem.name}
                                       fill={true}
                                       className="object-cover rounded-md"
                                     />
                                   </div>
                                   <div>
                                     <p className="text-sm font-medium">
-                                      Product name {i}
+                                      {cartItem.name}
                                     </p>
                                     <p className="text-xs text-muted-foreground">
-                                      Qty {i}
+                                      Qty {cartItem.qty}
                                     </p>
                                   </div>
                                 </div>
-                                <span className="text-sm">৳4,500.00</span>
+                                <span className="text-sm">
+                                  {numberFormatterForTaka(cartItem.lineTotal)}
+                                </span>
                               </div>
                             ))}
                           </ScrollArea>
@@ -314,8 +321,8 @@ const Page = () => {
 
                           <div className="space-y-2 px-4 text-sm">
                             <div className="flex justify-between mb-1">
-                              <span>Subtotal · 18 items</span>
-                              <span>৳33,750.00</span>
+                              <span>Subtotal · {totalItems} items</span>
+                              <span>{numberFormatterForTaka(subtotal)}</span>
                             </div>
                             <div className="flex justify-between mb-1">
                               <span>Shipping</span>
@@ -330,7 +337,7 @@ const Page = () => {
 
                     <div className="flex justify-between p-4 text-lg font-semibold">
                       <span>Total</span>
-                      <span>BDT ৳33,820.00</span>
+                      <span>{numberFormatterForTaka(subtotal)}</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -359,7 +366,7 @@ const Page = () => {
                           Show order summary
                         </span>
                         <span className="text-sm font-semibold">
-                          ৳33,820.00
+                          {numberFormatterForTaka(subtotal)}
                         </span>
                       </div>
                       <ChevronDown
@@ -371,31 +378,34 @@ const Page = () => {
 
                     {isOrderSummaryOpen && (
                       <div>
-                        <ScrollArea className="h-[320px] px-4">
-                          {[1, 2, 3, 4, 5].map((i) => (
+                        <ScrollArea className="h-80 px-4">
+                          {normalizedItems.map((cartItem) => (
                             <div
-                              key={i}
+                              key={cartItem.id}
                               className="mb-4 flex items-center justify-between"
                             >
                               <div className="flex items-center gap-3">
                                 <div className="relative h-14 w-14 rounded-md bg-gray-100">
                                   <Image
-                                    src={pizzaImg}
-                                    alt="Product image"
+                                    src={cartItem.imageSrc}
+                                    alt={cartItem.name}
                                     fill={true}
+                                    sizes="56px"
                                     className="object-cover rounded-md"
                                   />
                                 </div>
                                 <div>
                                   <p className="text-sm font-medium">
-                                    Product name {i}
+                                    {cartItem.name}
                                   </p>
                                   <p className="text-xs text-muted-foreground">
-                                    Qty {i}
+                                    Qty {cartItem.qty}
                                   </p>
                                 </div>
                               </div>
-                              <span className="text-sm">৳4,500.00</span>
+                              <span className="text-sm">
+                                {numberFormatterForTaka(cartItem.lineTotal)}
+                              </span>
                             </div>
                           ))}
                         </ScrollArea>
@@ -404,13 +414,13 @@ const Page = () => {
 
                         <div className="space-y-2 px-4 text-sm">
                           <div className="flex justify-between">
-                            <span>Subtotal · 18 items</span>
-                            <span>৳33,750.00</span>
+                            <span>Subtotal · {totalItems} items</span>
+                            <span>{numberFormatterForTaka(subtotal)}</span>
                           </div>
-                          <div className="flex justify-between mb-1">
+                          {/* <div className="flex justify-between mb-1">
                             <span>Shipping</span>
                             <span>৳70.00</span>
-                          </div>
+                          </div> */}
                           {/* input field with apply btn */}
                           <div className="flex my-2">
                             <Input
@@ -426,9 +436,9 @@ const Page = () => {
                             <Button className="rounded-l-none bg-green-700 hover:bg-green-600 cursor-pointer">
                               Apply
                             </Button>
-                       </div>
                           </div>
                         </div>
+                      </div>
                     )}
                   </div>
 
@@ -436,7 +446,7 @@ const Page = () => {
 
                   <div className="flex justify-between p-4 text-lg font-semibold">
                     <span>Total</span>
-                    <span>BDT ৳33,820.00</span>
+                    <span>{numberFormatterForTaka(subtotal)}</span>
                   </div>
                 </CardContent>
               </Card>
