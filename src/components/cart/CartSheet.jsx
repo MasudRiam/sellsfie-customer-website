@@ -16,6 +16,7 @@ import Link from "next/link";
 import { useCartStore } from "@/store/cart-store";
 import NoteSheet from "./NoteSheet";
 import CouponSheet from "./CouponSheet";
+import { Badge } from "@/components/ui/badge";
 
 export default function CartSheet() {
   const { open, setOpen, items, updateQty, removeItem } = useCartStore();
@@ -68,12 +69,13 @@ export default function CartSheet() {
                     </button>
                   </div>
 
-                  <button
+                  <Badge
+                    variant="secondary"
                     onClick={() => removeItem(item.id)}
-                    className="text-sm text-gray-500 underline cursor-pointer"
+                    className="cursor-pointer"
                   >
                     Remove
-                  </button>
+                  </Badge>
                 </div>
               </div>
             </div>

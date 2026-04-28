@@ -3,6 +3,7 @@
 import React from "react";
 import CartItem from "@/components/cart/CartItem";
 import { useCartStore } from "@/store/cart-store";
+import Link from "next/link";
 
 export default function Page() {
   const items = useCartStore((state) => state.items);
@@ -68,9 +69,11 @@ export default function Page() {
       </div>
 
       <div className="space-y-3 flex justify-end pt-2">
-        <button className="bg-green-600 text-white px-8 py-3 rounded hover:bg-green-700">
-          Place Order
-        </button>
+        <Link href="/checkout">
+          <button className="bg-green-600 text-white px-8 py-3 rounded hover:bg-green-700 cursor-pointer">
+            Proceed to Checkout
+          </button>
+        </Link>
       </div>
     </div>
   );
