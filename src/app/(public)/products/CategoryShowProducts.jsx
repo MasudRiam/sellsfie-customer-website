@@ -1,16 +1,6 @@
 import React from "react";
-import FilterProducts from "./filterProducts";
 import Image from "next/image";
-import { IoIosArrowDown } from "react-icons/io";
 import Link from "next/link";
-
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import { shopApi } from "@/utility/shopApi";
 import { Badge } from "@/components/ui/badge";
 import CartButton from "@/components/cart/CartButton";
@@ -23,104 +13,68 @@ export default async function CategoryShowProducts({ searchParams }) {
   
   return (
     <>
-      <section className="mx-auto w-full max-w-7xl px-1 py-4 sm:px-3 sm:py-8">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr]">
-          <aside className="hidden lg:block lg:sticky lg:top-24 lg:mr-0.5 h-fit">
-            <FilterProducts />
-          </aside>
-
-          <main>
-            <div className="ml-3 md:mt-6 lg:hidden">
-              <Sheet>
-                <SheetTrigger asChild>
-                  <button
-                    type="button"
-                    className="inline-flex items-center gap-1 text-lg font-medium"
-                  >
-                    Filters <IoIosArrowDown size={18} strokeWidth={2} />
-                  </button>
-                </SheetTrigger>
-
-                <SheetContent
-                  side="left"
-                  className="w-[78vw] max-w-70 sm:w-85 sm:max-w-none md:w-90"
-                >
-                  <SheetHeader>
-                    <SheetTitle>{""}</SheetTitle>
-                  </SheetHeader>
-
-                  <div className="md:mt-4 sm:mt-2 lg:mt-4">
-                    <FilterProducts />
-                  </div>
-                </SheetContent>
-              </Sheet>
-            </div>
-            {categoryProducts.length === 0 ? (
-              <div className="flex items-center justify-center py-20">
-                <p className="text-gray-500 text-lg">No products found</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 lg:ml-0.5 gap-5 items-stretch py-4 sm:px-3 sm:py-8 px-3">
-                {categoryProducts.map((product) => (
-                  <div
-                    key={product.id}
-                    className="border border-gray-300 bg-white p-4 text-center hover:shadow-md h-min transition flex flex-col relative"
-                  >
-                    <Badge
-                      className="absolute top-2 left-2 z-10 text-white bg-[#38ce00]"
-                    >
-                      stock: {Number(product.available_stock)}
-                    </Badge>
-                    <Link
-                      href={`/product/${product.id}`}
-                      className="no-underline"
-                    >
-                      {product.discount && (
-                        <span className="absolute top-3 left-3 rounded-full bg-green-100 px-3 py-1 text-xs text-green-700">
-                          ON SALE
-                        </span>
-                      )}
-                      <div className="relative h-37 sm:h-42 lg:h-55 w-full">
-                        <Image
-                          src={
-                            product.thumbnail_image?.url || "/placeholder.png"
-                          }
-                          alt={product.name}
-                          fill
-                          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
-                          className="object-contain"
-                        />
-                      </div>
-                      <div className="mt-auto pt-4">
-                        <p className="mt-3 sm:mt-4 text-sm whitespace-normal wrap-break-word overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
-                          {product.name}
-                        </p>
-                        <p className="mt-4 font-semibold text-black hover:text-green-700">
-                          {product.price?.has_discount ? (
-                            <>
-                              <span className="mr-2 text-sm text-gray-400 line-through">
-                                Tk {product?.price?.original}
-                              </span>
-                              <span>Tk {product?.price?.final}</span>
-                            </>
-                          ) : (
-                            <span>Tk {product?.price?.final}</span>
-                          )}
-                        </p>
-                      </div>
-                    </Link>
-
-                    <CartButton
-                      disabled={Number(product.available_stock) === 0}
-                      product={{ id: product.id, name: product.name, price: product?.price?.final, img: product.thumbnail_image.url, stock: product.available_stock }}
-                      />
-                  </div>
-                ))}
-              </div>
-            )}
-          </main>
+      {categoryProducts.length === 0 ? (
+        <div className="flex items-center justify-center py-20">
+          <p className="text-gray-500 text-lg">No products found</p>
         </div>
-      </section>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 lg:ml-0.5 gap-5 items-stretch py-4 sm:px-3 sm:py-8 px-3">
+          {categoryProducts.map((product) => (
+            <div
+              key={product.id}
+              className="border border-gray-300 bg-white p-4 text-center hover:shadow-md h-min transition flex flex-col relative"
+            >
+              <Badge className="absolute top-2 left-2 z-10 text-white bg-[#38ce00]">
+                stock: {Number(product.available_stock)}
+              </Badge>
+              <Link href={`/product/${product.id}`} className="no-underline">
+                {product.discount && (
+                  <span className="absolute top-3 left-3 rounded-full bg-green-100 px-3 py-1 text-xs text-green-700">
+                    ON SALE
+                  </span>
+                )}
+                <div className="relative h-37 sm:h-42 lg:h-55 w-full">
+                  <Image
+                    src={product.thumbnail_image?.url || "/placeholder.png"}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
+                    className="object-contain"
+                  />
+                </div>
+                <div className="mt-auto pt-4">
+                  <p className="mt-3 sm:mt-4 text-sm whitespace-normal wrap-break-word overflow-hidden leading-5 max-h-10 text-black hover:text-green-700">
+                    {product.name}
+                  </p>
+                  <p className="mt-4 font-semibold text-black hover:text-green-700">
+                    {product.price?.has_discount ? (
+                      <>
+                        <span className="mr-2 text-sm text-gray-400 line-through">
+                          Tk {product?.price?.original}
+                        </span>
+                        <span>Tk {product?.price?.final}</span>
+                      </>
+                    ) : (
+                      <span>Tk {product?.price?.final}</span>
+                    )}
+                  </p>
+                </div>
+              </Link>
+
+              <CartButton
+                disabled={Number(product.available_stock) === 0}
+                product={{
+                  id: product.id,
+                  name: product.name,
+                  price: product?.price?.final,
+                  img: product.thumbnail_image.url,
+                  stock: product.available_stock,
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 }
