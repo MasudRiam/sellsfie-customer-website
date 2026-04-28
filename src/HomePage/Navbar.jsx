@@ -27,12 +27,14 @@ export default function Navbar({ categoriesData = null, aboutShopData = null }) 
   const { setOpen: setCartOpen, open: cartOpen } = useCartStore();
 
   const aboutShop = aboutShopData?.data || {};
-  const logoSrc = aboutShop?.logo || sellsfieLogo;
+  const logoSrc = aboutShop?.brand_logo || sellsfieLogo;
 
   const [showCategory, setShowCategory] = useState(true);
   const lastScrollY = useRef(0);
   const [scrolled, setScrolled] = useState(false);
 
+  console.log("Navbar logo:", logoSrc);
+  console.log("Navbar aboutshop:", aboutShopData);
   useEffect(() => {
     const token = getToken();
     setIsLoggedIn(!!token);
