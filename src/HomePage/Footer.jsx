@@ -16,7 +16,7 @@ export default async function Footer() {
     hasError = true;
   }
 
-  const logoSrc = aboutInfo?.logo || sellsfieLogo;
+  const logoSrc = aboutInfo?.brand_logo || sellsfieLogo;
 
   return (
     <div>
