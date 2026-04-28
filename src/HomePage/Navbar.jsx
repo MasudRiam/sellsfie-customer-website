@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { FiMenu, FiShoppingBag, FiUser } from "react-icons/fi";
-import { GoSearch } from "react-icons/go";
 import { IoMdClose } from "react-icons/io";
 import sellsfieLogo from "@/assets/logo/sellsfie-logo.png";
 import Link from "next/link";
@@ -32,9 +31,7 @@ export default function Navbar({ categoriesData = null, aboutShopData = null }) 
   const [showCategory, setShowCategory] = useState(true);
   const lastScrollY = useRef(0);
   const [scrolled, setScrolled] = useState(false);
-
-  console.log("Navbar logo:", logoSrc);
-  console.log("Navbar aboutshop:", aboutShopData);
+  
   useEffect(() => {
     const token = getToken();
     setIsLoggedIn(!!token);
