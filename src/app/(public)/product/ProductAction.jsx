@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import QuantitySelector from "./QuantitySelector";
 import { useCartStore } from "@/store/cart-store";
+import Link from "next/link";
 
 export default function ProductAction({ product, maxQuantity }) {
   const { addToCart, setOpen } = useCartStore();
@@ -35,9 +36,11 @@ export default function ProductAction({ product, maxQuantity }) {
         >
           Add to cart
         </button>
-        <button className="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-500 cursor-pointer">
-          Buy it now
-        </button>
+        <Link href="/checkout">
+          <button onClick={handleAddToCart} className="bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-500 cursor-pointer">
+            Buy it now
+          </button>
+        </Link>
       </div>
     </>
   );
